@@ -372,6 +372,7 @@
     <None Include="Views\Home\price.cshtml" />
     <None Include="Views\Home\service.cshtml" />
     <None Include="Views\Home\sign_in.cshtml" />
+    <Content Include="Views\Home\sign_up.cshtml" />
     <None Include="Views\Home\team.cshtml" />
     <None Include="Views\Home\testimonial.cshtml" />
     <None Include="Views\Home\user.cshtml" />
