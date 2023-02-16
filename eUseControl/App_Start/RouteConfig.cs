@@ -38,19 +38,19 @@ namespace eUseControl
 
             );
             routes.MapRoute(
-                name: "appointment",
+                name: "Appointment",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "appointment", id = UrlParameter.Optional }
 
             );
             routes.MapRoute(
-                name: "price",
+                name: "Price",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "price", id = UrlParameter.Optional }
 
             );
             routes.MapRoute(
-                name: "about",
+                name: "About_page",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "about", id = UrlParameter.Optional }
 
