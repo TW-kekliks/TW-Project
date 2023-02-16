@@ -49,12 +49,7 @@ namespace eUseControl
                 defaults: new { controller = "Home", action = "price", id = UrlParameter.Optional }
 
             );
-            routes.MapRoute(
-                name: "About_page",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "about", id = UrlParameter.Optional }
 
-            );
         }
     }
 }
