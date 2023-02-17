@@ -21,5 +21,13 @@ namespace eUseControl.Controllers
         {
             return View();
         }
+        public ActionResult Price()
+        {
+            return View();
+        }
+        public ActionResult User() 
+        {
+            return View();
+        }
     }
 }
