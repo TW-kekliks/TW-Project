@@ -15,7 +15,7 @@
                 @Html.ActionLink("На главную", "Index", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
                 @Html.ActionLink("О нас", "about", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
                 
-                <a href="service.html" class="nav-item nav-link">Услуги</a>
+                <a href="@Url.Action("service", "Home")" class="nav-item nav-link">Услуги</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Страницы</a>
                     <div class="dropdown-menu m-0">

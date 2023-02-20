@@ -21,5 +21,9 @@ namespace eUseControl.Controllers
         {
             return View();
         }
+        public ActionResult service()
+        {
+            return View();
+        }
     }
 }
