@@ -21,7 +21,16 @@ namespace eUseControl.Controllers
         {
             return View();
         }
-        public ActionResult service()
+        public ActionResult Price()
+        {
+            return View();
+        }
+        public ActionResult User() 
+        {
+            return View();
+        }
+
+        public ActionResult Doctor_page() 
         {
             return View();
         }
