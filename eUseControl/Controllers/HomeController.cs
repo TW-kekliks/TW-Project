@@ -25,7 +25,20 @@ namespace eUseControl.Controllers
         {
             return View();
         }
-        public ActionResult User() 
+        public ActionResult User()
+        {
+            return View();
+        }
+
+        public ActionResult testimonial()
+        {
+            return View();
+        }
+        public ActionResult appointment()
+        {
+            return View();
+        }
+        public ActionResult service()
         {
             return View();
         }
@@ -34,5 +47,6 @@ namespace eUseControl.Controllers
         {
             return View();
         }
+
     }
 }
