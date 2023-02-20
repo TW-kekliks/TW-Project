@@ -62,6 +62,19 @@ namespace eUseControl
              defaults: new { controller = "Home", action = "doctor_page", id = UrlParameter.Optional }
 
          );
+            routes.MapRoute(
+             name: "testimonial",
+             url: "{controller}/{action}/{id}",
+             defaults: new { controller = "Home", action = "testimonial", id = UrlParameter.Optional }
+
+         );
+            routes.MapRoute(
+           name: "appoitment",
+           url: "{controller}/{action}/{id}",
+           defaults: new { controller = "Home", action = "appointment", id = UrlParameter.Optional }
+
+       );
+           
 
 
 
