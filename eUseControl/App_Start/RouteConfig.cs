@@ -63,6 +63,33 @@ namespace eUseControl
 
          );
 
+
+
+
+
+
+
+
+
+            routes.MapRoute(
+             name: "Team",
+             url: "{controller}/{action}/{id}",
+             defaults: new { controller = "Home", action = "team", id = UrlParameter.Optional }
+
+         );
+            routes.MapRoute(
+             name: "Signin",
+             url: "{controller}/{action}/{id}",
+             defaults: new { controller = "Home", action = "sign_in", id = UrlParameter.Optional }
+
+         );
+            routes.MapRoute(
+         name: "Signup",
+         url: "{controller}/{action}/{id}",
+         defaults: new { controller = "Home", action = "sign_up", id = UrlParameter.Optional }
+
+     );
+
         }
     }
 }
