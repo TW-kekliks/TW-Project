@@ -29,5 +29,10 @@ namespace eUseControl.Controllers
         {
             return View();
         }
+
+        public ActionResult Doctor_page() 
+        {
+            return View();
+        }
     }
 }

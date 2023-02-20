@@ -53,6 +53,13 @@ namespace eUseControl
              name: "User",
              url: "{controller}/{action}/{id}",
              defaults: new { controller = "Home", action = "user", id = UrlParameter.Optional }
+             
+             );
+
+             routes.MapRoute(
+             name: "Doctor",
+             url: "{controller}/{action}/{id}",
+             defaults: new { controller = "Home", action = "doctor_page", id = UrlParameter.Optional }
 
          );
 
