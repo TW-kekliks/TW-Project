@@ -15,20 +15,20 @@
                 @Html.ActionLink("На главную", "Index", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
                 @Html.ActionLink("О нас", "about", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
                 
-                <a href="service.html" class="nav-item nav-link">Услуги</a>
+                <a href=@Url.Action("service", "Home") class="nav-item nav-link">Услуги</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Страницы</a>
                     <div class="dropdown-menu m-0">
                         <a href="@Url.Action("price", "Home")" class="dropdown-item">Тарифы</a>
                         <a href="team.html" class="dropdown-item">Наши спрециалисты</a>
-                        <a href="testimonial.html" class="dropdown-item">Отзывы</a>
-                        <a href="appointment.html" class="dropdown-item ">Запись</a>
+                        <a href="@Url.Action("testimonial", "Home")" class="dropdown-item">Отзывы</a>
+                        <a href="@Url.Action("appointment", "Home")" class="dropdown-item ">Запись</a>
                     </div>
                 </div>
                 <a href="@Url.Action("Contact", "Home")" class="nav-item nav-link">Контакты</a>
             </div>
             <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-            <a href="appointment.html" class="btn btn-primary py-2 px-4 ms-3">Вход</a>
+            <a href="@Url.Action("appointment", "Home")" class="btn btn-primary py-2 px-4 ms-3">Вход</a>
         </div>
 
 </nav>

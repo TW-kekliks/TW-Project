@@ -364,7 +364,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\main.js" />
     <None Include="Views\Home\about.cshtml" />
-    <None Include="Views\Home\admin.cshtml" />
     <None Include="Views\Home\appointment.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Home\doctor_page.cshtml" />
