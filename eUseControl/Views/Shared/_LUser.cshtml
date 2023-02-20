@@ -1,12 +1,13 @@
-﻿@using System.Web.Optimization
+﻿
+@using System.Web.Optimization
 <!DOCTYPE html>
-<html lang="en>
+<html lang="en">
+
 <head>
     @Html.Partial("_Header")
 </head>
+
 <body>
-
-
     @Html.Partial("_Spinner")
 
     @Html.Partial("_Topbar")
@@ -17,13 +18,8 @@
 
     @RenderBody()
 
-    @Html.Partial("_Banner")
-
-    @Html.Partial("_Footer")
-
     @Html.Partial("_Js")
 
-    @RenderSection("scripts", required: false)
-
 </body>
+
 </html>

@@ -1,27 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@{
+    Layout = "~/Views/Shared/_LPages.cshtml";
+}
 
-<head>
-    @Html.Partial("_Header")
-</head>
-
-<body>
-    <!-- Spinner Start -->
-    @Html.Partial("_Spinner")
-
-    <!-- Spinner End -->
-    <!-- Topbar Start -->
-    @Html.Partial("_Topbar")
-
-    <!-- Topbar End -->
-    <!-- Navbar Start -->
-    @Html.Partial("_Navbar")
-
-    <!-- Navbar End -->
-    <!-- Full Screen Search Start -->
-    @Html.Partial("_Search")
-
-    <!-- Full Screen Search End -->
     <!-- Hero Start -->
     <div class="container-fluid bg-primary py-5 hero-header mb-5">
         <div class="row py-3">
@@ -58,18 +38,3 @@
         </div>
     </div>
     <!-- Testimonial End -->
-
-    @Html.Partial("_Newsletter")
-
-
-    @Html.Partial("_Footer")
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    @Html.Partial("_Js")
-</body>
-
-</html>
