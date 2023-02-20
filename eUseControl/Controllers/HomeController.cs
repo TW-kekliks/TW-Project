@@ -48,5 +48,18 @@ namespace eUseControl.Controllers
             return View();
         }
 
+        public ActionResult team()
+        {
+            return View();
+        }
+        public ActionResult sign_in()
+        {
+            return View();
+        }
+        public ActionResult sign_up()
+        {
+            return View();
+        }
+
     }
 }
