@@ -429,6 +429,9 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Js.cshtml" />
     <Content Include="Views\Shared\_Newsletter.cshtml" />
+    <Content Include="Views\Shared\_LPages.cshtml" />
+    <Content Include="Views\Shared\_LDoctor.cshtml" />
+    <Content Include="Views\Shared\_LUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

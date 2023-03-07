@@ -1,102 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+@{
+    Layout = "~/Views/Shared/_LUser.cshtml";
+}
 
-<head>
-    @Html.Partial("_Header")
-</head>
-
-<body>
-    
-    <!-- Spinner Start -->
-    @Html.Partial("_Spinner")
-    <!-- Spinner End -->
-
-
-    <!-- Topbar Start -->
-    @Html.Partial("_Topbar")
-    <!-- Topbar End -->
-
-    <!-- Navbar Start -->
-    @Html.Partial("_Navbar")
-    <!-- Navbar End -->
-
-
-    <!-- Full Screen Search Start -->
-    @Html.Partial("_Search")
-    <!-- Full Screen Search End -->
-
-    <div class="container wow fadeInUp" data-wow-delay="0.1s" style="position:fixed; left:  700px; top: 185px;">
-            <h2 class="text-primary text-uppercase">Ближайшие записи</h2>
-		<div class="row row-striped">
-			<div class="col-2 text-right">
-				<h1 class="display-4"><span class="badge badge-secondary">10</span></h1>
-				<h2>ФЕВ</h2>
-			</div>
-			<div class="col-10">
-				<h3 class="text-uppercase"><strong>Консультация</strong></h3>
-				<ul class="list-inline">
-				    <li class="list-inline-item text-white"><i class="fa fa-calendar-o" aria-hidden="true"></i> Пятница</li>
-					<li class="list-inline-item text-white"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30</li>
-					<li class="list-inline-item text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Кабинет 409</li>
-				</ul>
-				<p style="color: white;">Примечания: Просим вас принести медицинскую карточку, а также рецепт ваших очков</p>
-			</div>
-		</div>
-        <div class="row row-striped">
-			<div class="col-2 text-right">
-				<h1 class="display-4"><span class="badge badge-secondary">17</span></h1>
-				<h2>ФЕВ</h2>
-			</div>
-			<div class="col-10">
-				<h3 class="text-uppercase"><strong>Консультация</strong></h3>
-				<ul class="list-inline">
-				    <li class="list-inline-item text-white"><i class="fa fa-calendar-o" aria-hidden="true"></i> Пятница</li>
-					<li class="list-inline-item text-white"><i class="fa fa-clock-o" aria-hidden="true"></i> 13:45</li>
-					<li class="list-inline-item text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Кабинет 409</li>
-				</ul>
-				<p style="color: white;">Примечания: Отсутсвуют</p>
-			</div>
-		</div>
-	</div>
-
-    <!-- Information Start-->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-5">
-                    <div class="section-title mb-4">
-                        <h2 class="position-relative d-inline-block text-primary text-uppercase">Информация</h2>
-                        <h6 class="display-6 mb-0"><small><small><small><small>Имя: Иван</small></small></small></small></h6>
-                        <h6 class="display-6 mb-0"><small><small><small><small>Фамилия: Иванов</small></small></small></small></h6>
-                        <h6 class="display-6 mb-0"><small><small><small><small>Моб.Номер: +373 6045 1435</small></small></small></small></h6>
-                        <h6 class="display-6 mb-0"><small><small><small><small>Email: example@utm.md</small></small></small></small></h6> 
-                    </div>
-                </div>
-            </div>
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="bg-white d-flex flex-column p-1" style="height: 300px; width: 400px;">
-                        <h3 class="text-lg-center mb-3">Записаться на консультацию</h3>
-
-    <!--Information End-->
-    <!-- Appointment table Start-->
-                        <div class="date mb-3" id="date" data-target-input="nearest">
-                            <input type="text" class="form-control bg-light border-0 datetimepicker-input"
-                                   placeholder="Назначить дату" data-target="#date" data-toggle="datetimepicker" style="height: 40px;">
-                        </div>
-                        <div class="time" id="time1" data-target-input="nearest">
-                            <input type="text"
-                                   class="form-control bg-light border-0 datetimepicker-input"
-                                   placeholder="Выберите время" data-target="#time1" data-toggle="datetimepicker" style="height: 40px;">
-                        </div>
-                        <a class="btn btn-light mt-3" href="">Готово</a>
-                    </div>
-                </div>
+<div class="container wow fadeInUp" data-wow-delay="0.1s" style="position:fixed; left:  700px; top: 185px;">
+    <h2 class="text-primary text-uppercase">Ближайшие записи</h2>
+    <div class="row row-striped">
+        <div class="col-2 text-right">
+            <h1 class="display-4"><span class="badge badge-secondary">10</span></h1>
+            <h2>ФЕВ</h2>
+        </div>
+        <div class="col-10">
+            <h3 class="text-uppercase"><strong>Консультация</strong></h3>
+            <ul class="list-inline">
+                <li class="list-inline-item text-white"><i class="fa fa-calendar-o" aria-hidden="true"></i> Пятница</li>
+                <li class="list-inline-item text-white"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30</li>
+                <li class="list-inline-item text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Кабинет 409</li>
+            </ul>
+            <p style="color: white;">Примечания: Просим вас принести медицинскую карточку, а также рецепт ваших очков</p>
         </div>
     </div>
-    <!-- Appointment table End-->
+    <div class="row row-striped">
+        <div class="col-2 text-right">
+            <h1 class="display-4"><span class="badge badge-secondary">17</span></h1>
+            <h2>ФЕВ</h2>
+        </div>
+        <div class="col-10">
+            <h3 class="text-uppercase"><strong>Консультация</strong></h3>
+            <ul class="list-inline">
+                <li class="list-inline-item text-white"><i class="fa fa-calendar-o" aria-hidden="true"></i> Пятница</li>
+                <li class="list-inline-item text-white"><i class="fa fa-clock-o" aria-hidden="true"></i> 13:45</li>
+                <li class="list-inline-item text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Кабинет 409</li>
+            </ul>
+            <p style="color: white;">Примечания: Отсутсвуют</p>
+        </div>
+    </div>
+</div>
 
-    <!-- Template Javascript -->
-    @Html.Partial("_Js")
-    </body>
-    
-    </html>
+<!-- Information Start-->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <div class="section-title mb-4">
+                    <h2 class="position-relative d-inline-block text-primary text-uppercase">Информация</h2>
+                    <h6 class="display-6 mb-0"><small><small><small><small>Имя: Иван</small></small></small></small></h6>
+                    <h6 class="display-6 mb-0"><small><small><small><small>Фамилия: Иванов</small></small></small></small></h6>
+                    <h6 class="display-6 mb-0"><small><small><small><small>Моб.Номер: +373 6045 1435</small></small></small></small></h6>
+                    <h6 class="display-6 mb-0"><small><small><small><small>Email: example@utm.md</small></small></small></small></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
+            <div class="bg-white d-flex flex-column p-1" style="height: 300px; width: 400px;">
+                <h3 class="text-lg-center mb-3">Записаться на консультацию</h3>
+
+                <!--Information End-->
+                <!-- Appointment table Start-->
+                <div class="date mb-3" id="date" data-target-input="nearest">
+                    <input type="text" class="form-control bg-light border-0 datetimepicker-input"
+                           placeholder="Назначить дату" data-target="#date" data-toggle="datetimepicker" style="height: 40px;">
+                </div>
+                <div class="time" id="time1" data-target-input="nearest">
+                    <input type="text"
+                           class="form-control bg-light border-0 datetimepicker-input"
+                           placeholder="Выберите время" data-target="#time1" data-toggle="datetimepicker" style="height: 40px;">
+                </div>
+                <a class="btn btn-light mt-3" href="">Готово</a>
+            </div>
+        </div>
+    </div>
+</div>
