@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eUseControl.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace eUseControl.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            
             return View();
         }
         public ActionResult Contact()
@@ -27,7 +29,10 @@ namespace eUseControl.Controllers
         }
         public ActionResult User()
         {
-            return View();
+            UserData u = new UserData();
+            u.Username = "customer";
+            u.Appointment = new List<string> { "10.00", "14.00" };
+            return View(u);
         }
 
         public ActionResult testimonial()

@@ -8,6 +8,6 @@ namespace eUseControl.BusinessLogic.Interfaces
 {
     public interface ISession
     {
-        public RequestResponceAction UserLogin(ULoginData data);
+         RequestResponceAction UserLogin(ULoginData data);
     }
 }

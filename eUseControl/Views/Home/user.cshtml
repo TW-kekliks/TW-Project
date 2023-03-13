@@ -2,38 +2,29 @@
     Layout = "~/Views/Shared/_LUser.cshtml";
 }
 
-<div class="container wow fadeInUp" data-wow-delay="0.1s" style="position:fixed; left:  700px; top: 185px;">
-    <h2 class="text-primary text-uppercase">Ближайшие записи</h2>
-    <div class="row row-striped">
-        <div class="col-2 text-right">
-            <h1 class="display-4"><span class="badge badge-secondary">10</span></h1>
-            <h2>ФЕВ</h2>
+@model eUseControl.Models.UserData
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table">
+            <div class="table table-bordered">
+                <thead>
+                    <tr>Appointment</tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Appointment)
+                    {
+                        <tr>
+                            <td>@item</td>
+                        </tr>
+                    }
+                </tbody>
+            </div>
+
         </div>
-        <div class="col-10">
-            <h3 class="text-uppercase"><strong>Консультация</strong></h3>
-            <ul class="list-inline">
-                <li class="list-inline-item text-white"><i class="fa fa-calendar-o" aria-hidden="true"></i> Пятница</li>
-                <li class="list-inline-item text-white"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30</li>
-                <li class="list-inline-item text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Кабинет 409</li>
-            </ul>
-            <p style="color: white;">Примечания: Просим вас принести медицинскую карточку, а также рецепт ваших очков</p>
-        </div>
+
     </div>
-    <div class="row row-striped">
-        <div class="col-2 text-right">
-            <h1 class="display-4"><span class="badge badge-secondary">17</span></h1>
-            <h2>ФЕВ</h2>
-        </div>
-        <div class="col-10">
-            <h3 class="text-uppercase"><strong>Консультация</strong></h3>
-            <ul class="list-inline">
-                <li class="list-inline-item text-white"><i class="fa fa-calendar-o" aria-hidden="true"></i> Пятница</li>
-                <li class="list-inline-item text-white"><i class="fa fa-clock-o" aria-hidden="true"></i> 13:45</li>
-                <li class="list-inline-item text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Кабинет 409</li>
-            </ul>
-            <p style="color: white;">Примечания: Отсутсвуют</p>
-        </div>
-    </div>
+
 </div>
 
 <!-- Information Start-->
@@ -70,3 +61,4 @@
         </div>
     </div>
 </div>
+

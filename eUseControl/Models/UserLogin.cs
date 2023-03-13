@@ -9,5 +9,6 @@ namespace eUseControl.Models
     {
         public string Credential { get; set; }
         public string Password { get; set; }
+        
     }
 }
