@@ -29,6 +29,7 @@ namespace eUseControl.Controllers
         {
             return View();
         }
+
         public ActionResult testimonial()
         {
             return View();
@@ -38,6 +39,11 @@ namespace eUseControl.Controllers
             return View();
         }
         public ActionResult service()
+        {
+            return View();
+        }
+
+        public ActionResult Doctor_page() 
         {
             return View();
         }
