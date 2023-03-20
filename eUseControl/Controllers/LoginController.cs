@@ -15,8 +15,9 @@ namespace eUseControl.Controllers
         public LoginController()
         {
             var bl = new BusinessLogic.BusinessLogic();
-            _session = bl.GetSessionBL();
+            _session = bl.GetSessionBL(); 
         }
+        
 
         public ActionResult Index()
         {
@@ -28,14 +29,16 @@ namespace eUseControl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(UserLogin login)
         {
-            if (ModelState.IsValid)
+
+            if (ModelState.IsValid) 
             {
                 ULoginData data = new ULoginData
                 {
-                    Credential = login.Credential,
-                    Password = login.Password,
-                    LoginIp = Request.UserHostAddress,
-                    LoginDateTime = DateTime.Now
+                    Credential= login.Credential,
+                    Password= login.Password,
+                    LoginIp= Request.UserHostAddress,
+                    LoginDateTime= DateTime.Now
+
 
                 };
 

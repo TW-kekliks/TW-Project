@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eUseControl.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace eUseControl.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            
             return View();
         }
         public ActionResult Contact()
@@ -27,7 +29,16 @@ namespace eUseControl.Controllers
         }
         public ActionResult User()
         {
-            return View();
+            UserData u = new UserData();
+            u.Username = "customer";
+            u.Surname = "customer's surname";
+            u.PhoneNumber= "1234567890";
+            u.Email = "exemple@utm.md";
+            u.Appointment = new List<List<string>>();
+            u.Appointment.Add(new List<string> {"Март","Пятница", "10.00","409"});
+            u.Appointment.Add(new List<string> {"Март","Cуббота", "12.00","429"});
+            u.Notes = "Принесите карточку";
+            return View(u);
         }
 
         public ActionResult testimonial()
