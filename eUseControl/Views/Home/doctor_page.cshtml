@@ -2,43 +2,30 @@
     Layout = "~/Views/Shared/_LDoctor.cshtml";
 }
 
-<div class="container wow fadeInUp" data-wow-delay="0.1s" style="position:fixed; left:  700px; top: 185px;">
-    <h2 class="text-primary text-uppercase">Запросы</h2>
-    <div class="row row-striped">
-        <div class="col-2 text-right">
-            <h1 class="display-4"><span class="badge badge-secondary">10</span></h1>
-            <h2>ФЕВ</h2>
-        </div>
-        <div class="col-10">
-            <h3 class="text-uppercase"><strong>Консультация</strong></h3>
-            <ul class="list-inline">
-                <li class="list-inline-item text-white"><i class="fa fa-calendar-o" aria-hidden="true"></i> Пятница</li>
-                <li class="list-inline-item text-white"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30</li>
-                <li class="list-inline-item text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Кабинет 409</li>
-            </ul>
-            <p style="color: white;">Примечания: Просим вас принести медицинскую карточку, а также рецепт ваших очков</p>
-            <a class="btn btn-light mt-3" href="">Отклонить</a>
-            <a class="btn btn-light mt-3" href="">Принять</a>
-        </div>
-    </div>
-    <div class="row row-striped">
-        <div class="col-2 text-right">
-            <h1 class="display-4"><span class="badge badge-secondary">17</span></h1>
-            <h2>ФЕВ</h2>
-        </div>
-        <div class="col-10">
-            <h3 class="text-uppercase"><strong>Консультация</strong></h3>
-            <ul class="list-inline">
-                <li class="list-inline-item text-white"><i class="fa fa-calendar-o" aria-hidden="true"></i> Пятница</li>
-                <li class="list-inline-item text-white"><i class="fa fa-clock-o" aria-hidden="true"></i> 13:45</li>
-                <li class="list-inline-item text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Кабинет 409</li>
-            </ul>
+@model eUseControl.Models.UserData
 
-            <p style="color: white;">Примечания: Отсутсвуют</p>
-            <a class="btn btn-light mt-3" href="">Отклонить</a>
-            <a class="btn btn-light mt-3" href="">Принять</a>
+<div class="container wow fadeInUp" data-wow-delay="0.1s" style="position:fixed; left:  700px; top: 185px;">
+    <h2 class="text-primary text-uppercase">Ближайшие записи</h2>
+    @foreach (var item in Model.Appointment)
+    {
+        <div class="row row-striped">
+            <div class="col-2 text-right">
+                <h1 class="display-4"><span class="badge badge-secondary">10</span></h1>
+                <h2>@item[0]</h2>
+            </div>
+            <div class="col-10">
+                <h3 class="text-uppercase"><strong>Консультация</strong></h3>
+                <ul class="list-inline">
+                    <li class="list-inline-item text-white"><i class="fa fa-calendar-o" aria-hidden="true"></i> @item[1]</li>
+                    <li class="list-inline-item text-white"><i class="fa fa-clock-o" aria-hidden="true"></i> @item[2]</li>
+                    <li class="list-inline-item text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Кабинет @item[3]</li>
+                </ul>
+                <a class="btn btn-light mt-3" href="">Отклонить</a>
+                <a class="btn btn-light mt-3" href="">Прниять</a>
+            </div>
         </div>
-    </div>
+    }
+
 </div>
 
 <!-- Information Start-->
@@ -48,8 +35,8 @@
             <div class="col-lg-5">
                 <div class="section-title mb-4">
                     <h2 class="position-relative d-inline-block text-primary text-uppercase">Профиль</h2>
-                    <h6 class="display-6 mb-0"><small><small><small><small>Имя: Иван</small></small></small></small></h6>
-                    <h6 class="display-6 mb-0"><small><small><small><small>Фамилия: Иванов</small></small></small></small></h6>
+                    <h6 class="display-6 mb-0"><small><small><small><small>Имя: @Model.Username</small></small></small></small></h6>
+                    <h6 class="display-6 mb-0"><small><small><small><small>Фамилия: @Model.Surname</small></small></small></small></h6>
                 </div>
 
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">

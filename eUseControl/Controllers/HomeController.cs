@@ -37,6 +37,7 @@ namespace eUseControl.Controllers
             u.Appointment = new List<List<string>>();
             u.Appointment.Add(new List<string> {"Март","Пятница", "10.00","409"});
             u.Appointment.Add(new List<string> {"Март","Cуббота", "12.00","429"});
+            u.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
             u.Notes = "Принесите карточку";
             return View(u);
         }
@@ -54,9 +55,20 @@ namespace eUseControl.Controllers
             return View();
         }
 
-        public ActionResult Doctor_page() 
+        public ActionResult Doctor_page()
         {
-            return View();
+            UserData d = new UserData();
+            d.Username = "doctor";
+            d.Surname = "dotors's surname";
+            d.PhoneNumber = "1234567890";
+            d.Email = "exemple@utm.md";
+            d.Appointment = new List<List<string>>();
+            d.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
+            d.Appointment.Add(new List<string> { "Март", "Cуббота", "12.00", "429" });
+            d.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
+            d.Notes = "Принесите карточку";
+            return View(d);
+
         }
 
         public ActionResult team()
