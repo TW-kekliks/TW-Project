@@ -18,7 +18,9 @@ namespace eUseControl.Controllers
             _session = bl.GetSessionBL(); 
         }
 
+
         [HttpGet]
+
         public ActionResult Index()
         {
             return RedirectToAction("SignIn", "Login");
@@ -36,6 +38,7 @@ namespace eUseControl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(UserLogin login)
         {
+
             if (ModelState.IsValid) 
             {
                 ULoginData data = new ULoginData
@@ -44,6 +47,7 @@ namespace eUseControl.Controllers
                     Password= login.Password,
                     LoginIp= Request.UserHostAddress,
                     LoginDateTime= DateTime.Now
+
 
                 };
 
