@@ -448,8 +448,8 @@
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\eUseControl.BusinessLogic\eUseControl.BusinessLogic.csproj">
-      <Project>{328e5db2-afd8-4a41-83a5-ff5a1c5cb166}</Project>
+    <ProjectReference Include="..\eUseControl.BusinessLogic_\eUseControl.BusinessLogic.csproj">
+      <Project>{2ce6b666-ee50-466a-8ec4-12bb38a30c09}</Project>
       <Name>eUseControl.BusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\eUseControl.Domain\eUseControl.Domain.csproj">
