@@ -17,10 +17,18 @@ namespace eUseControl.Controllers
             var bl = new BusinessLogic.BusinessLogic();
             _session = bl.GetSessionBL(); 
         }
-        
+
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("SignIn", "Login");
+        }
+
+        [HttpGet]
+        public ActionResult SignIn()
+        {
+            UserData user = new UserData();
+            return View(user);
         }
 
 
@@ -44,7 +52,7 @@ namespace eUseControl.Controllers
                 {
                     //ADD COOKIE
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("SignIn", "Login");
 
                 }
                 else
