@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eUseControl.Domain", "eUseC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eUseControl.Helpers", "eUseControl.Helpers\eUseControl.Helpers.csproj", "{565C842B-6830-42D5-8C71-2A8D760EDD57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eUseControl.BusinessLogic", "eUseControl.BusinessLogic_\eUseControl.BusinessLogic.csproj", "{2CE6B666-EE50-466A-8EC4-12BB38A30C09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eUseControl.BusinessLogic", "eUseControl.BusinessLogic\eUseControl.BusinessLogic.csproj", "{2CE6B666-EE50-466A-8EC4-12BB38A30C09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
