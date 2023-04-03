@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{547E3A6D-C215-4F35-AE06-F6C8A708545E}</ProjectGuid>
+    <ProjectGuid>{F66EFDCB-282D-46F3-888E-92117F47F9A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>eUseControl.Helpers</RootNamespace>
-    <AssemblyName>eUseControl.Helpers</AssemblyName>
+    <RootNamespace>eUseControl.Helpers1</RootNamespace>
+    <AssemblyName>eUseControl.Helpers1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
