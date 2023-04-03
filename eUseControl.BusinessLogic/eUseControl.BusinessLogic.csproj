@@ -6,11 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\eUseControl.Domain\eUseControl.Domain.csproj" />
-    <ProjectReference Include="..\eUseControl.Helpers\eUseControl.Helpers.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="DBModel\Seed\" />
   </ItemGroup>
 
@@ -26,6 +21,11 @@
     <PackageReference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" Version="3.6.0" />
     <PackageReference Include="System.Data.Common" Version="4.3.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eUseControl.Domain\eUseControl.Domain.csproj" />
+    <ProjectReference Include="..\eUseControl.Helpers\eUseControl.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

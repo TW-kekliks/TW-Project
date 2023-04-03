@@ -5,7 +5,7 @@ using System.Data.Common;
 
 namespace eUseControl.BusinessLogic.DBModel
 {
-    internal class UserContext : 
+    internal class UserContext 
     {
     }
 }

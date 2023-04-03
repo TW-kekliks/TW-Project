@@ -1,7 +1,7 @@
 ﻿using System;
 using System;
 using eUseControl.Domain.Enums;
-using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eUseControl.Domain.Entities.User
 {
