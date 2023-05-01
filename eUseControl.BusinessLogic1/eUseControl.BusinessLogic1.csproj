@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{547E3A6D-C215-4F35-AE06-F6C8A708545E}</ProjectGuid>
+    <ProjectGuid>{4572FCCA-B4A1-43AB-BCDB-DC3AF8ACF294}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>eUseControl.Helpers</RootNamespace>
-    <AssemblyName>eUseControl.Helpers</AssemblyName>
+    <RootNamespace>eUseControl.BusinessLogic1</RootNamespace>
+    <AssemblyName>eUseControl.BusinessLogic1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,8 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BusinessLogic.cs" />
+    <Compile Include="Core\AdminApi.cs" />
+    <Compile Include="Core\UserApi.cs" />
+    <Compile Include="DBModel\UserContext.cs" />
+    <Compile Include="Interfaces\ISession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionBL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eUseControl.Domain1\eUseControl.Domain1.csproj">
+      <Project>{d981f42c-89c5-45bc-b3df-52a7b3967990}</Project>
+      <Name>eUseControl.Domain1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eUseControl.Helpers1\eUseControl.Helpers1.csproj">
+      <Project>{f66efdcb-282d-46f3-888e-92117f47f9a1}</Project>
+      <Name>eUseControl.Helpers1</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

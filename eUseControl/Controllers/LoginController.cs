@@ -20,7 +20,9 @@ namespace eUseControl.Controllers
             _session = bl.GetSessionBL(); 
         }
 
+
         [HttpGet]
+
         public ActionResult Index()
         {
             return RedirectToAction("SignIn", "Login");
@@ -30,14 +32,18 @@ namespace eUseControl.Controllers
         public ActionResult SignIn()
         {
             UserData user = new UserData();
-            ULoginData data = new ULoginData()
+            
+            ULoginData data = new ULoginData
             {
-                Credential = "Login123",
-                Password = "qwerty123456",
+                Credential = "Login123" ,
+                Password = "qwerty1234",
                 LoginIp = Request.UserHostAddress,
                 LoginDateTime = DateTime.Now
+
+
             };
-            var userlogin = _session.UserLogin(data);
+
+            var userLogin = _session.UserLogin(data);
             return View(user);
         }
 
@@ -46,6 +52,7 @@ namespace eUseControl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(UserLogin login)
         {
+
             if (ModelState.IsValid) 
             {
                 ULoginData data = new ULoginData
@@ -54,6 +61,7 @@ namespace eUseControl.Controllers
                     Password= login.Password,
                     LoginIp= Request.UserHostAddress,
                     LoginDateTime= DateTime.Now
+
 
                 };
 

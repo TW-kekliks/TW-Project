@@ -456,11 +456,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eUseControl.BusinessLogic\eUseControl.BusinessLogic.csproj">
-      <Project>{2ce6b666-ee50-466a-8ec4-12bb38a30c09}</Project>
+      <Project>{51cf099d-62fb-40f8-85bb-d8b8e42a944c}</Project>
       <Name>eUseControl.BusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\eUseControl.Domain\eUseControl.Domain.csproj">
-      <Project>{08acf442-d89f-4bb5-abb6-ce52105b348d}</Project>
+      <Project>{3ac40164-6001-446d-a59f-08ae4645c651}</Project>
       <Name>eUseControl.Domain</Name>
     </ProjectReference>
   </ItemGroup>

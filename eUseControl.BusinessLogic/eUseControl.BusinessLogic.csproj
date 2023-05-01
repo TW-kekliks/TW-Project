@@ -5,12 +5,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2CE6B666-EE50-466A-8EC4-12BB38A30C09}</ProjectGuid>
+    <ProjectGuid>{51CF099D-62FB-40F8-85BB-D8B8E42A944C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>eUseControl.BusinessLogic</RootNamespace>
     <AssemblyName>eUseControl.BusinessLogic</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
@@ -60,15 +60,12 @@
     <Compile Include="SessionBL.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DBModel\Seed\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\eUseControl.Domain\eUseControl.Domain.csproj">
-      <Project>{08acf442-d89f-4bb5-abb6-ce52105b348d}</Project>
+      <Project>{3ac40164-6001-446d-a59f-08ae4645c651}</Project>
       <Name>eUseControl.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\eUseControl.Helpers\eUseControl.Helpers.csproj">
-      <Project>{565c842b-6830-42d5-8c71-2a8d760edd57}</Project>
+      <Project>{547e3a6d-c215-4f35-ae06-f6c8a708545e}</Project>
       <Name>eUseControl.Helpers</Name>
     </ProjectReference>
   </ItemGroup>
