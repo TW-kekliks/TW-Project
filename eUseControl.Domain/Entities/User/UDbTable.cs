@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using eUseControl.Domain.Enums;
+using eUseControl.Domain.Entities.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eUseControl.Domain.Entities.User
@@ -22,8 +22,7 @@ namespace eUseControl.Domain.Entities.User
 
         public string Password { get; set; }
 
-        [Required]
-        [Display(Name = "Email address")]
+        [Display(Name = "Email")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Email cannot be shorter than 5 characters")]
 
         public string Email { get; set; }

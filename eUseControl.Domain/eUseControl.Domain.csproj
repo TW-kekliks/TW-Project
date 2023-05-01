@@ -54,7 +54,7 @@
     <Compile Include="Entities\Responces\RequestResponceAction.cs" />
     <Compile Include="Entities\User\UDbTable.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />
-    <Compile Include="Enums\URole.cs" />
+    <Compile Include="Entities\Enums\URole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
