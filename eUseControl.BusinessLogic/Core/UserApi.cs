@@ -1,6 +1,7 @@
 ﻿using eUseControl.BusinessLogic.DBModel;
 using eUseControl.Domain.Entities.Responces;
 using eUseControl.Domain.Entities.User;
+using eUseControl.Domain.Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
