@@ -17,11 +17,11 @@ namespace eUseControl.BusinessLogic.Core
             {
                 user = new UDbTable
                 {
-                    Username = "Alexandr",
+                    Username = "OlegSomov",
                     Password = "qwerty1234",
                     LastLogin = DateTime.Now,
                     Level = Domain.Enums.URole.UNAUTHORIZED,
-                    Email = "info@mail.ru"
+                    Email = "info2@mail.ru"
                 };
                 db.Users.Add(user);
                 db.SaveChanges();
