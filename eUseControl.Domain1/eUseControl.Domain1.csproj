@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{547E3A6D-C215-4F35-AE06-F6C8A708545E}</ProjectGuid>
+    <ProjectGuid>{D981F42C-89C5-45BC-B3DF-52A7B3967990}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>eUseControl.Helpers</RootNamespace>
-    <AssemblyName>eUseControl.Helpers</AssemblyName>
+    <RootNamespace>eUseControl.Domain1</RootNamespace>
+    <AssemblyName>eUseControl.Domain1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,8 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Entities\Responces\RequestResponceAction.cs" />
+    <Compile Include="Entities\User\UDbTable.cs" />
+    <Compile Include="Entities\User\ULoginData.cs" />
+    <Compile Include="Enums\URole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eUseControl.Helpers1\eUseControl.Helpers1.csproj">
+      <Project>{f66efdcb-282d-46f3-888e-92117f47f9a1}</Project>
+      <Name>eUseControl.Helpers1</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

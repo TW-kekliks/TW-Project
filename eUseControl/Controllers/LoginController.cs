@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace eUseControl.Controllers
 {
@@ -17,11 +18,32 @@ namespace eUseControl.Controllers
             var bl = new BusinessLogic.BusinessLogic();
             _session = bl.GetSessionBL(); 
         }
-        
+
+
+        [HttpGet]
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("SignIn", "Login");
+        }
+
+        [HttpGet]
+        public ActionResult SignIn()
+        {
+            UserData user = new UserData();
+            
+            ULoginData data = new ULoginData
+            {
+                Credential = "Login123" ,
+                Password = "qwerty1234",
+                LoginIp = Request.UserHostAddress,
+                LoginDateTime = DateTime.Now
+
+
+            };
+
+            var userLogin = _session.UserLogin(data);
+            return View(user);
         }
 
 
@@ -47,7 +69,7 @@ namespace eUseControl.Controllers
                 {
                     //ADD COOKIE
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("SignIn", "Login");
 
                 }
                 else
