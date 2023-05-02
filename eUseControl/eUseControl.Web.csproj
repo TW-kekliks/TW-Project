@@ -404,7 +404,6 @@
     <None Include="Views\Home\price.cshtml" />
     <None Include="Views\Home\service.cshtml" />
     <None Include="Views\Login\SignIn.cshtml" />
-    <Content Include="Views\Home\sign_up.cshtml" />
     <None Include="Views\Home\team.cshtml" />
     <None Include="Views\Home\testimonial.cshtml" />
     <None Include="Views\Home\user.cshtml" />
@@ -419,6 +418,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserRegistration.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -441,6 +441,7 @@
     <Content Include="Views\Shared\_LPages.cshtml" />
     <Content Include="Views\Shared\_LDoctor.cshtml" />
     <Content Include="Views\Shared\_LUser.cshtml" />
+    <Content Include="Views\Login\SignUp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -462,6 +463,10 @@
     <ProjectReference Include="..\eUseControl.Domain\eUseControl.Domain.csproj">
       <Project>{3ac40164-6001-446d-a59f-08ae4645c651}</Project>
       <Name>eUseControl.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eUseControl.Helpers\eUseControl.Helpers.csproj">
+      <Project>{547e3a6d-c215-4f35-ae06-f6c8a708545e}</Project>
+      <Name>eUseControl.Helpers</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

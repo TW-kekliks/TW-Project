@@ -23,7 +23,7 @@ namespace eUseControl.Controllers
 
         [HttpGet]
 
-        public ActionResult Index()
+        public ActionResult Login()
         {
             return RedirectToAction("SignIn", "Login");
         }
@@ -31,16 +31,15 @@ namespace eUseControl.Controllers
         [HttpGet]
         public ActionResult SignIn()
         {
+
             UserData user = new UserData();
-            
+
             ULoginData data = new ULoginData
             {
-                Credential = "Login123" ,
+                Email = "Login123",
                 Password = "qwerty1234",
                 LoginIp = Request.UserHostAddress,
                 LoginDateTime = DateTime.Now
-
-
             };
 
             var userLogin = _session.UserLogin(data);
@@ -57,7 +56,7 @@ namespace eUseControl.Controllers
             {
                 ULoginData data = new ULoginData
                 {
-                    Credential= login.Credential,
+                    Email = login.Email,
                     Password= login.Password,
                     LoginIp= Request.UserHostAddress,
                     LoginDateTime= DateTime.Now
@@ -79,6 +78,11 @@ namespace eUseControl.Controllers
                     return View();
                 }
             }
+            return View();
+        }
+
+        public ActionResult SignUp()
+        {
             return View();
         }
     }

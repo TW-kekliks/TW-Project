@@ -16,20 +16,7 @@ namespace eUseControl.BusinessLogic.Core
             UDbTable user;
             using (var db = new UserContext())
             {
-                user = new UDbTable
-                {
-                    Username = "Login123",
-                    Password = "qwerty1234",
-                    LastLogin = DateTime.Now,
-                    Level = Domain.Enums.URole.UNAUTHORIZED,
-                    Email = "info228@mail.ru"
-                };
-                db.Users.Add(user);
-                db.SaveChanges();
-            }
-            using (var db = new UserContext())
-            {
-                user = db.Users.FirstOrDefault(u => u.Username == data.Credential);
+                user = db.Users.FirstOrDefault(u => u.Username == data.Email);
             }
             if (user ==null)
             {
@@ -37,7 +24,7 @@ namespace eUseControl.BusinessLogic.Core
             }
             using (var db = new UserContext())
             {
-                var users = db.Users.Where(u => u.Level == Domain.Enums.URole.DOCTOR).ToList();
+                var users = db.Users.Where(u => u.Level == Domain.Entities.Enums.URole.DOCTOR).ToList();
             }
             return new RequestResponceAction();
         }
