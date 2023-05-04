@@ -16,16 +16,26 @@ namespace eUseControl.BusinessLogic.Core
             UDbTable user;
             using (var db = new UserContext())
             {
-                user = db.Users.FirstOrDefault(u => u.Username == data.Email);
+                user = new UDbTable
+                {
+                    Username = data.Username,
+                    Password = data.Password,
+                    LastLogin = DateTime.Now,
+                    Level = Domain.Entities.Enums.URole.USER,
+                    Email = data.Email
+                };
+                db.Users.Add(user);
+                db.SaveChanges();
             }
-            if (user ==null)
-            {
-                throw new Exception();
-            }
+
             using (var db = new UserContext())
             {
-                var users = db.Users.Where(u => u.Level == Domain.Entities.Enums.URole.DOCTOR).ToList();
+                user = db.Users.FirstOrDefault(u => u.Username == data.Username);
             }
+            /*if (user ==null)
+            {
+                throw new Exception();
+            } */
             return new RequestResponceAction();
         }
     }

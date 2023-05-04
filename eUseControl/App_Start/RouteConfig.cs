@@ -74,16 +74,6 @@ namespace eUseControl
            defaults: new { controller = "Home", action = "appointment", id = UrlParameter.Optional }
 
        );
-           
-
-
-
-
-
-
-
-
-
             routes.MapRoute(
              name: "Team",
              url: "{controller}/{action}/{id}",
@@ -93,13 +83,13 @@ namespace eUseControl
             routes.MapRoute(
              name: "Signin",
              url: "{controller}/{action}/{id}",
-             defaults: new { controller = "Home", action = "sign_in", id = UrlParameter.Optional }
+             defaults: new { controller = "Login", action = "SignIn", id = UrlParameter.Optional }
 
          );
             routes.MapRoute(
          name: "Signup",
          url: "{controller}/{action}/{id}",
-         defaults: new { controller = "Home", action = "sign_up", id = UrlParameter.Optional }
+         defaults: new { controller = "Login", action = "SignUp", id = UrlParameter.Optional }
 
      );
 

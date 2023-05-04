@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eUseControl.BusinessLogic.DBModel
 {
-    class UserContext : DbContext
+    public class UserContext : DbContext
     {
         public UserContext() :
             base("eUseControl")
