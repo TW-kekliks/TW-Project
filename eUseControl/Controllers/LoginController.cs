@@ -7,9 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using eUseControl.BusinessLogic.DBModel;
-using System.Web.Security;
+using AutoMapper;
 
 namespace eUseControl.Controllers
 {
@@ -18,7 +16,7 @@ namespace eUseControl.Controllers
         private readonly ISession _session;
         public LoginController()
         {
-            var bl = new BusinessLogic.BusinessLogic();
+            var bl = new BusinessLogic.BussinesLogic();
             _session = bl.GetSessionBL(); 
         }
 
@@ -34,22 +32,28 @@ namespace eUseControl.Controllers
         {
             if (ModelState.IsValid)
             {
-                UDbTable user = null;
-                using (UserContext db = new UserContext())
+                Mapper.Initialize(cfg => cfg.CreateMap<UserLogin, ULoginData>());
+                var data = Mapper.Map<ULoginData>(model);
+
+                data.LoginIp = Request.UserHostAddress;
+                data.LoginDateTime = DateTime.Now;
+
+                var userLogin = _session.UserLogin(data);
+                if (userLogin.Status)
                 {
-                    user = db.Users.FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
-                }
-                if (user != null) 
-                {
-                    FormsAuthentication.SetAuthCookie(model.Email, true);
-                    return RedirectToAction("Index", "Home");
+                    HttpCookie cookie = _session.GenCookie(model.Email);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+
+                    return RedirectToAction("user", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Такого пользователя не существует");
+                    ModelState.AddModelError("", userLogin.StatusMsg);
+                    return View();
                 }
             }
-            return View(model);
+
+            return View();
         }
 
         public ActionResult SignUp()
@@ -77,7 +81,8 @@ namespace eUseControl.Controllers
                     var userLogin = _session.UserLogin(data);
                     if (userLogin.Status)
                     {
-                        //ADD COOKIE
+                       HttpCookie cookie = _session.GenCookie(login.Email);
+                       ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
                         return RedirectToAction("user", "Home");
 
@@ -87,10 +92,6 @@ namespace eUseControl.Controllers
                         ModelState.AddModelError("", userLogin.StatusMsg);
                         return View();
                     }
-                }
-                else
-                {
-                    return RedirectToAction("SignUp", "Login");
                 }
             }
             return View();
