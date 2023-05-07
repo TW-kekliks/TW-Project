@@ -26,20 +26,6 @@ namespace eUseControl.Controllers
         {
             return View();
         }
-        public ActionResult User()
-        {
-            UserData u = new UserData();
-            u.Username = "customer";
-            u.Surname = "customer's surname";
-            u.PhoneNumber= "1234567890";
-            u.Email = "exemple@utm.md";
-            u.Appointment = new List<List<string>>();
-            u.Appointment.Add(new List<string> {"Март","Пятница", "10.00","409"});
-            u.Appointment.Add(new List<string> {"Март","Cуббота", "12.00","429"});
-            u.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
-            u.Notes = "Принесите карточку";
-            return View(u);
-        }
 
         public ActionResult testimonial()
         {
@@ -57,7 +43,7 @@ namespace eUseControl.Controllers
         public ActionResult Doctor_page()
         {
             UserData d = new UserData();
-            d.Username = "doctor";
+            d.FirstName = "doctor";
             d.Surname = "dotors's surname";
             d.PhoneNumber = "1234567890";
             d.Email = "exemple@utm.md";

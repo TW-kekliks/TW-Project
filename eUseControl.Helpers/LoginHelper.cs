@@ -7,9 +7,9 @@ using System.Text;
 
 namespace eUseControl.Helpers
 {
-    public class HashGen
+    public class LoginHelper
     {
-        public static string HashPassword(string password)
+        public static string HashGen(string password)
         {
             using (var sha256 = SHA256.Create())
             {

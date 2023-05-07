@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using eUseControl.BusinessLogic.DBModel;
 
 namespace eUseControl.Controllers
 {
@@ -44,7 +45,7 @@ namespace eUseControl.Controllers
                     HttpCookie cookie = _session.GenCookie(model.Email);
                     ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
-                    return RedirectToAction("user", "Home");
+                    return RedirectToAction("user", "User");
                 }
                 else
                 {
@@ -63,38 +64,40 @@ namespace eUseControl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignUp(UserRegistration login)
+        public ActionResult SignUp(UserRegistration model)
         {
-
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
-                ULoginData data = new ULoginData
+                using (UserContext db = new UserContext())
                 {
-                    Username = login.Username,
-                    Email = login.Email,
-                    Password = login.Password,
-                    LoginIp = Request.UserHostAddress,
-                    LoginDateTime= DateTime.Now
-                };
-                if (data.Password == login.ConfirmPassword)
-                {
-                    var userLogin = _session.UserLogin(data);
-                    if (userLogin.Status)
+                    if (db.Users.Any(u => u.Email == model.Email))
                     {
-                       HttpCookie cookie = _session.GenCookie(login.Email);
-                       ControllerContext.HttpContext.Response.Cookies.Add(cookie);
-
-                        return RedirectToAction("user", "Home");
-
+                        ModelState.AddModelError("Email", "Email уже занят");
+                        return View(model);
                     }
-                    else
+                    if (model.Password != model.ConfirmPassword)
                     {
-                        ModelState.AddModelError("", userLogin.StatusMsg);
-                        return View();
+                        ModelState.AddModelError("ConfirmPassword", "Не правильно повторили пароль ");
+                        return View(model);
                     }
+
+                    var user = new UDbTable
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Number = model.Number,
+                        Email = model.Email,
+                        Password = model.Password,
+                        LastLogin = DateTime.Now
+                    };
+                    db.Users.Add(user);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index", "Home");
                 }
             }
-            return View();
-        } 
+            return View(model);
+        }
+
     }
 }

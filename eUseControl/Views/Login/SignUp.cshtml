@@ -23,37 +23,47 @@
 
             </div>
             <div class="col-xl-4 col-lg-6 wow slideInUp" data-wow-delay="0.3s">
-                    <div class="row g-3">
+                <div class="row g-3">
 
-                        @using (Html.BeginForm("SignUp", "Login", FormMethod.Post, new { @id = "LoginForm" }))
-                        {
-                            @Html.AntiForgeryToken()
+                    @using (Html.BeginForm("SignUp", "Login", FormMethod.Post, new { @id = "LoginForm" }))
+                    {
+                        @Html.AntiForgeryToken()
 
-                            <h1 title="Заполните поля">SignUp</h1>
-                            @Html.ValidationMessage("")
-                            <div class="group">
-                                @Html.LabelFor(x => x.Email)
-                                @Html.EditorFor(x => x.Email)
-                                @Html.ValidationMessageFor(x => x.Email)
-                            </div>
-                            <div class="group">
-                                @Html.LabelFor(x => x.Username)
-                                @Html.EditorFor(x => x.Username)
-                                @Html.ValidationMessageFor(x => x.Username)
-                            </div>
-                            <div class="group">
-                                @Html.LabelFor(x => x.Password)
-                                @Html.PasswordFor(x => x.Password)
-                                @Html.ValidationMessageFor(x => x.Password)
-                            </div>
-                            <div class="group">
-                                @Html.LabelFor(x => x.ConfirmPassword)
-                                @Html.PasswordFor(x => x.ConfirmPassword)
-                                @Html.ValidationMessageFor(x => x.ConfirmPassword)
-                            </div>
-                            <button class="btn btn-primary w-100 py-3" type="submit">Регистрация</button>
-                        }
+                        <h1 title="Заполните поля">SignUp</h1>
+                        @Html.ValidationMessage("")
+                        <div class="group">
+                            @Html.LabelFor(x => x.Email)
+                            @Html.EditorFor(x => x.Email)
+                            @Html.ValidationMessageFor(x => x.Email)
                         </div>
+                        <div class="group">
+                            @Html.LabelFor(x => x.FirstName)
+                            @Html.EditorFor(x => x.FirstName)
+                            @Html.ValidationMessageFor(x => x.FirstName)
+                        </div>
+                        <div class="group">
+                            @Html.LabelFor(x => x.LastName)
+                            @Html.EditorFor(x => x.LastName)
+                            @Html.ValidationMessageFor(x => x.LastName)
+                        </div>
+                        <div class="group">
+                            @Html.LabelFor(x => x.Number)
+                            @Html.EditorFor(x => x.Number)
+                            @Html.ValidationMessageFor(x => x.Number)
+                        </div>
+                        <div class="group">
+                            @Html.LabelFor(x => x.Password)
+                            @Html.PasswordFor(x => x.Password)
+                            @Html.ValidationMessageFor(x => x.Password)
+                        </div>
+                        <div class="group">
+                            @Html.LabelFor(x => x.ConfirmPassword)
+                            @Html.PasswordFor(x => x.ConfirmPassword)
+                            @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                        </div>
+                        <button class="btn btn-primary w-100 py-3" type="submit">Регистрация</button>
+                    }
+                </div>
                     </div>
             </div>
             <div class="col-xl-4 col-lg-12 wow slideInUp" data-wow-delay="0.6s">

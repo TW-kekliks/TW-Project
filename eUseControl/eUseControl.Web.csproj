@@ -409,7 +409,7 @@
     <None Include="Views\Login\SignIn.cshtml" />
     <None Include="Views\Home\team.cshtml" />
     <None Include="Views\Home\testimonial.cshtml" />
-    <None Include="Views\Home\user.cshtml" />
+    <None Include="Views\User\user.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -459,7 +459,6 @@
     <Folder Include="css\bootstrap\mixins\" />
     <Folder Include="css\bootstrap\utilities\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eUseControl.BusinessLogic\eUseControl.BusinessLogic.csproj">

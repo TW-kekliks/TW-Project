@@ -8,18 +8,15 @@ namespace eUseControl.Models
 {
     public class UserRegistration
     {
-        /*[Required]
+        [Required]
         public string FirstName { get; set; }
         [Required]
-        public string LastName { get; set; } */
-        [Required]
-        public string Username { get; set; }
+        public string LastName { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        /*[Required]
-        [DataType(DataType.PhoneNumber)]
-        public string Number { get; set; } */
+        [Required]
+        public string Number { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

@@ -18,7 +18,7 @@ namespace eUseControl.BusinessLogic.Core
             var validate = new EmailAddressAttribute();
             if (validate.IsValid(data.Email))
             {
-                // var pass = HashGen(data.Password);
+                // var pass = LoginHelper.HashGen(data.Password);
                 using (var db = new UserContext())
                 {
                     result = db.Users.FirstOrDefault(u => u.Email == data.Email && u.Password == data.Password);
@@ -44,7 +44,7 @@ namespace eUseControl.BusinessLogic.Core
                 // var pass = HashGen(data.Password);
                 using (var db = new UserContext())
                 {
-                    result = db.Users.FirstOrDefault(u => u.Username == data.Email && u.Password == data.Password);
+                    result = db.Users.FirstOrDefault(u => u.Email == data.Email && u.Password == data.Password);
                 }
 
                 if (result == null)
@@ -129,7 +129,7 @@ namespace eUseControl.BusinessLogic.Core
                 }
                 else
                 {
-                    curentUser = db.Users.FirstOrDefault(u => u.Username == session.Username);
+                    curentUser = db.Users.FirstOrDefault(u => u.Email == session.Username);
                 }
             }
 
