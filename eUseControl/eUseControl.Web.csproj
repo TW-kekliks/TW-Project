@@ -402,7 +402,7 @@
     <None Include="Views\Home\about.cshtml" />
     <None Include="Views\Home\appointment.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
-    <None Include="Views\Home\doctor_page.cshtml" />
+    <None Include="Views\User\doctor.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\price.cshtml" />
     <None Include="Views\Home\service.cshtml" />

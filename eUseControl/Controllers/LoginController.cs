@@ -45,7 +45,14 @@ namespace eUseControl.Controllers
                     HttpCookie cookie = _session.GenCookie(model.Email);
                     ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
-                    return RedirectToAction("user", "User");
+                    using (UserContext db = new UserContext())
+                    {
+                        data.Level = db.Users.FirstOrDefault(u => u.Email == data.Email).Level;
+                    }
+                    if (data.Level == Domain.Entities.Enums.URole.DOCTOR)
+                        return RedirectToAction("doctor", "User");
+                    else
+                        return RedirectToAction("user", "User");
                 }
                 else
                 {
@@ -88,7 +95,9 @@ namespace eUseControl.Controllers
                         Number = model.Number,
                         Email = model.Email,
                         Password = model.Password,
+                        Level = Domain.Entities.Enums.URole.USER,
                         LastLogin = DateTime.Now
+                        
                     };
                     db.Users.Add(user);
                     db.SaveChanges();
