@@ -1,6 +1,7 @@
 ﻿using eUseControl.BusinessLogic.Interfaces;
 using eUseControl.Domain.Entities.User;
 using eUseControl.Models;
+using eUseControl.BusinessLogic.DBModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace eUseControl.Controllers
 {
@@ -17,73 +19,82 @@ namespace eUseControl.Controllers
         public LoginController()
         {
             var bl = new BusinessLogic.BusinessLogic();
-            _session = bl.GetSessionBL(); 
-        }
-
-
-        [HttpGet]
-
-        public ActionResult Login()
-        {
-            return RedirectToAction("SignIn", "Login");
+            _session = bl.GetSessionBL();
         }
 
         [HttpGet]
         public ActionResult SignIn()
         {
 
-            UserData user = new UserData();
-
-            ULoginData data = new ULoginData
-            {
-                Email = "Login123",
-                Password = "qwerty1234",
-                LoginIp = Request.UserHostAddress,
-                LoginDateTime = DateTime.Now
-            };
-
-            var userLogin = _session.UserLogin(data);
-            return View(user);
+            return View();
         }
 
+        [HttpGet]
+        public ActionResult SignUp()
+        {
+            var model = new UserRegistration();
+            return View(model);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(UserLogin login)
+        public ActionResult SignUp(UserRegistration model)
         {
-
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
-                ULoginData data = new ULoginData
+                using (UserContext db = new UserContext())
                 {
-                    Email = login.Email,
-                    Password= login.Password,
-                    LoginIp= Request.UserHostAddress,
-                    LoginDateTime= DateTime.Now
+                    if (db.Users.Any(u => u.Email == model.Email))
+                    {
+                        ModelState.AddModelError("Email", "Email уже занят");
+                        return View(model);
+                    }
+                    if (model.Password!=model.ConfirmPassword)
+                    {
+                        ModelState.AddModelError("ConfirmPassword", "Не правильно повторили пароль ");
+                        return View(model);
+                    }
 
+                    var user = new UDbTable
+                    {
+                        Name = model.FirstName,
+                        Surname = model.LastName,
+                        Phone = model.Phone,
+                        Email = model.Email,
+                        Password = model.Password,
+                        LastLogin = DateTime.Now
+                    };
+                    db.Users.Add(user);
+                    db.SaveChanges();
 
-                };
+                    return RedirectToAction("Index","Home");
+                }
+            }
+            return View(model);
+        }
 
-                var userLogin = _session.UserLogin(data);
-                if (userLogin.Status)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignIn(UserLogin model)
+        {
+            if (ModelState.IsValid)
+            {
+                UDbTable user = null;
+                using (UserContext db = new UserContext())
                 {
-                    //ADD COOKIE
-
-                    return RedirectToAction("SignIn", "Login");
-
+                    user = db.Users.FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
+                }
+                if (user != null)
+                {
+                    FormsAuthentication.SetAuthCookie(model.Email, true);
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", userLogin.StatusMsg);
-                    return View();
+                    ModelState.AddModelError("Email", "Нет такого пользователя");
                 }
             }
-            return View();
-        }
-
-        public ActionResult SignUp()
-        {
-            return View();
+            return View(model);
         }
     }
 }

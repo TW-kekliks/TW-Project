@@ -29,19 +29,21 @@
                         <form>
                             <div class="row g-3">
                                 <div class="col-12">
-                                    <input type="text" class="form-control border-0 bg-light px-4" placeholder="Ваш Email" style="height: 55px;">
-                                    @Html.LabelFor(x => x.Email)
+                                    @Html.LabelFor(x => x.Email, new  {@class = "form-lable" })
+                                    <br />
                                     @Html.TextBoxFor(x => x.Email, new { @type = "email" })
-                                    @Html.ValidationMessageFor(x => x.Email)
+                                    <br />
+                                    @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="col-12">
-                                    <input type="email" class="form-control border-0 bg-light px-4" placeholder="Ваш пароль" style="height: 55px;">
-                                    @Html.LabelFor(x => x.Password)
-                                    @Html.PasswordFor(x => x.Password)
+                                    @Html.LabelFor(x => x.Password, new { @class = "form-lable" })
+                                    <br />
+                                    @Html.TextBoxFor(x => x.Password, new { @type = "password" })
+                                    <br />
                                     @Html.ValidationMessageFor(x => x.Password)
                                 </div>
                                 <div class="col-12">
-                                    <a href="@Url.Action("User", "Home")" class="btn btn-primary w-100 py-3">Вход</a>
+                                    <button type="submit" class="btn btn-primary w-100 py-3">Вход</button>
                                 </div>
                                 <div class="col-12">
                                     <a href="@Url.Action("SignUp", "Login")" class="btn btn-primary w-100 py-3">Регистрация</a>

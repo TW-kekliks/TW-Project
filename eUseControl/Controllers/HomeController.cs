@@ -1,4 +1,6 @@
 ﻿using eUseControl.Models;
+using eUseControl.Web.Controllers;
+using eUseControl.Web.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +8,27 @@ using System.Web;
 using System.Web.Mvc;
 namespace eUseControl.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController :BaseController
     {
         // GET: Home
         public ActionResult Index()
         {
-            
-            return View();
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"]!="login")
+            {
+                return RedirectToAction("SignIn", "Login");
+            }
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+            UserData u = new UserData()
+            {
+                UserName = user.Name,
+                UserSurname = user.Surname,
+                Appointment = new List<List<string>>
+                { new List<string> { }
+
+                }
+            };
+            return View(u);
         }
         public ActionResult Contact()
         {
@@ -28,17 +44,8 @@ namespace eUseControl.Controllers
         }
         public ActionResult User()
         {
-            UserData u = new UserData();
-            u.Username = "customer";
-            u.Surname = "customer's surname";
-            u.PhoneNumber= "1234567890";
-            u.Email = "exemple@utm.md";
-            u.Appointment = new List<List<string>>();
-            u.Appointment.Add(new List<string> {"Март","Пятница", "10.00","409"});
-            u.Appointment.Add(new List<string> {"Март","Cуббота", "12.00","429"});
-            u.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
-            u.Notes = "Принесите карточку";
-            return View(u);
+
+            return View();
         }
 
         public ActionResult testimonial()
@@ -56,17 +63,7 @@ namespace eUseControl.Controllers
 
         public ActionResult Doctor_page()
         {
-            UserData d = new UserData();
-            d.Username = "doctor";
-            d.Surname = "dotors's surname";
-            d.PhoneNumber = "1234567890";
-            d.Email = "exemple@utm.md";
-            d.Appointment = new List<List<string>>();
-            d.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
-            d.Appointment.Add(new List<string> { "Март", "Cуббота", "12.00", "429" });
-            d.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
-            d.Notes = "Принесите карточку";
-            return View(d);
+            return View();
 
         }
 
@@ -74,14 +71,7 @@ namespace eUseControl.Controllers
         {
             return View();
         }
-        public ActionResult sign_in()
-        {
-            return View();
-        }
-        public ActionResult sign_up()
-        {
-            return View();
-        }
+
 
     }
 }
