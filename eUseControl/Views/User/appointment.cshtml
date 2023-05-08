@@ -29,13 +29,14 @@
             <div class="col-lg-6">
                 <div class="appointment-form h-100 d-flex flex-column justify-content-center text-center p-5 wow zoomIn" data-wow-delay="0.6s">
                     <h1 class="text-white mb-4">Сделать запись</h1>
-                    <form>
-                        @using (Html.BeginForm("appointment", "User", FormMethod.Post))
+                    
+                        @using (Html.BeginForm("appointment", "User", FormMethod.Post, new { @id = "AppointmentForm" }))
                         {
+                            @Html.AntiForgeryToken()
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date1" data-target-input="nearest">
-                                        @Html.TextBoxFor(model => model.Date, new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Дата", @style = "height: 55px;",  @type = "date"})
+                                        @Html.TextBoxFor(model => model.Date, new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Дата", @style = "height: 55px;", @type = "date" })
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -45,16 +46,16 @@
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date1" data-target-input="nearest">
-                                        @Html.DropDownListFor(model => model.Doctor,new SelectList(Enum.GetValues(typeof(eUseControl.Domain.Entities.Enums.Doctors))), "Выберите врача",new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Доктор", @style = "height: 55px;"   })
+                                        @Html.DropDownListFor(model => model.Doctor, new SelectList(Enum.GetValues(typeof(eUseControl.Domain.Entities.Enums.Doctors))), "Выберите врача", new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Доктор", @style = "height: 55px;" })
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date1" data-target-input="nearest">
-                                        @Html.DropDownListFor(model => model.Service, new SelectList(Enum.GetValues(typeof(eUseControl.Domain.Entities.Enums.Services))),"Выберите услугу", new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Услуги", @style = "height: 55px;"  })
+                                        @Html.DropDownListFor(model => model.Service, new SelectList(Enum.GetValues(typeof(eUseControl.Domain.Entities.Enums.Services))), "Выберите услугу", new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Услуги", @style = "height: 55px;" })
                                     </div>
                                 </div>
-                                
-                                <div class="col-12 col-sm-6" >
+
+                                <div class="col-12 col-sm-6">
                                     <div class="date" id="date1" data-target-input="nearest">
                                         @Html.DropDownListFor(model => model.Room, new SelectList(Enum.GetValues(typeof(eUseControl.Domain.Entities.Enums.Rooms))), "Выберите кабинет", new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Услуги", @style = "height: 55px;" })
                                     </div>
@@ -67,9 +68,9 @@
                                 <div class="col-12">
                                 </div>
                             </div>
-                                    <button  type="submit" class="btn btn-dark w-100 py-3" >Подтвердить запись</button>
+                            <button type="submit" class="btn btn-dark w-100 py-3">Подтвердить запись</button>
                         }
-                    </form>
+                    
                 </div>
             </div>
         </div>

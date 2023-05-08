@@ -19,13 +19,11 @@ namespace eUseControl.Domain.Entities.User
 
         [Required]
         [Display(Name = "Doctor")]
-        [StringLength(10)]
-        public string Doctor { get; set; }
+        public Doctors Doctor { get; set; }
 
         [Required]
         [Display(Name = "Service")]
-        [StringLength(10)]
-        public string Service { get; set; }
+        public Services Service { get; set; }
 
         [Required]
         [Display(Name = "Date")]
@@ -38,12 +36,11 @@ namespace eUseControl.Domain.Entities.User
 
         [Required]
         [Display(Name = "Room")]
-        [StringLength(3)]
-        public string Room { get; set; }
+        public Rooms Room { get; set; }
 
 
         [Display(Name = "Notes")]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Notes { get; set; }
         
 

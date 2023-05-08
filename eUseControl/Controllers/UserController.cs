@@ -98,7 +98,7 @@ namespace eUseControl.Controllers
             return View(u);
         }
 
-        [HttpGet]
+
         public ActionResult appointment()
         {
             return View();
