@@ -86,8 +86,6 @@ namespace eUseControl.Controllers
             UserData u = new UserData();
             u.FirstName = profile.FirstName;
             u.LastName = profile.LastName;
-            u.PhoneNumber = profile.Number;
-            u.Email = profile.Email;
             u.Appointment = new List<List<string>>();
             u.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
             u.Appointment.Add(new List<string> { "Март", "Cуббота", "12.00", "429" });
