@@ -63,6 +63,8 @@
                                 <div class="col-12 col-sm-6" style="width:200%">
                                     <div class="date" id="date1" data-target-input="nearest">
                                         @Html.TextBoxFor(model => model.Notes, new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Примечания", @style = "height: 110px;" })
+                                        @Html.ValidationMessageFor(x => x.Notes, "", new { @class = "text-danger" })
+
                                     </div>
                                 </div>
                                 <div class="col-12">

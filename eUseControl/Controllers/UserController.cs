@@ -53,11 +53,8 @@ namespace eUseControl.Controllers
                 u.LastName = profile.LastName;
                 u.PhoneNumber = profile.Number;
                 u.Email = profile.Email;
-                u.Appointment = new List<List<string>>();
-                u.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
-                u.Appointment.Add(new List<string> { "Март", "Cуббота", "12.00", "429" });
-                u.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
-                u.Notes = "Принесите карточку";
+                
+                
                 return View(u);
         }
 
@@ -89,15 +86,10 @@ namespace eUseControl.Controllers
             u.FirstName = profile.FirstName;
             u.LastName = profile.LastName;
             u.PhoneNumber = profile.Number;
-            u.Email = profile.Email;
-            u.Appointment = new List<List<string>>();
-            u.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
-            u.Appointment.Add(new List<string> { "Март", "Cуббота", "12.00", "429" });
-            u.Appointment.Add(new List<string> { "Март", "Пятница", "10.00", "409" });
-            u.Notes = "Принесите карточку";
+            
+            
             return View(u);
         }
-
 
         public ActionResult appointment()
         {
@@ -134,7 +126,7 @@ namespace eUseControl.Controllers
                 {
                     if (db.Users.Any(u => u.Time == model.Time && u.Doctor == model.Doctor && u.Date == model.Date))
                     {
-                        ModelState.AddModelError("", "Этот врач занят в это время");
+                        ModelState.AddModelError("Notes", "Этот врач занят в это время");
                         return View(model);
                     }
 

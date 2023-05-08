@@ -30,12 +30,14 @@
                  @Html.AntiForgeryToken()
                 <div class="group">
                     @Html.LabelFor(x => x.Email)
+                    <br />
                     @Html.TextBoxFor(x => x.Email, new { @type = "email" })
                     @Html.ValidationMessageFor(x => x.Email,"",new {@class = "text-danger"})
                 </div>
                 <br />
                 <div class="group">
                     @Html.LabelFor(x => x.Password)
+                    <br />
                     @Html.PasswordFor(x => x.Password)
                     @Html.ValidationMessageFor(x => x.Password)
                 </div>

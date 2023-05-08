@@ -1,4 +1,5 @@
 ﻿using eUseControl.Models;
+using eUseControl.Web.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,52 +7,48 @@ using System.Web;
 using System.Web.Mvc;
 namespace eUseControl.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: Home
         public ActionResult Index()
         {
-            
+            SessionStatus();
             return View();
         }
         public ActionResult Contact()
         {
+            SessionStatus();
             return View();
         }
         public ActionResult about()
         {
+            SessionStatus();
             return View();
         }
         public ActionResult Price()
         {
+            SessionStatus();
             return View();
         }
 
         public ActionResult testimonial()
         {
+            SessionStatus();
             return View();
         }
-        public ActionResult appointment()
-        {
-            return View();
-        }
+
         public ActionResult service()
         {
+            SessionStatus();
             return View();
         }
 
         public ActionResult team()
         {
+            SessionStatus();
             return View();
         }
-        public ActionResult sign_in()
-        {
-            return View();
-        }
-        public ActionResult sign_up()
-        {
-            return View();
-        }
+  
 
     }
 }
