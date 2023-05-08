@@ -67,7 +67,7 @@ namespace eUseControl.Controllers
                     db.Users.Add(user);
                     db.SaveChanges();
 
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("SignIn","Login");
                 }
             }
             return View(model);
