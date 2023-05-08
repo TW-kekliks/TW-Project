@@ -51,8 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Enums\ARole.cs" />
+    <Compile Include="Entities\Enums\Doctors.cs" />
+    <Compile Include="Entities\Enums\Rooms.cs" />
+    <Compile Include="Entities\Enums\Services.cs" />
     <Compile Include="Entities\Enums\URole.cs" />
     <Compile Include="Entities\Responces\RequestResponceAction.cs" />
+    <Compile Include="Entities\User\ADbTable.cs" />
     <Compile Include="Entities\User\Session.cs" />
     <Compile Include="Entities\User\UDbTable.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />

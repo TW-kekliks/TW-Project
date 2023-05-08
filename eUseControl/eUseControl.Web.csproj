@@ -400,8 +400,9 @@
     <Content Include="Scripts\jquery-3.6.4.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.4.min.map" />
     <None Include="Views\Home\about.cshtml" />
-    <None Include="Views\Home\appointment.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Shared\_NavbarLogin.cshtml" />
+    <Content Include="Views\User\appointment.cshtml" />
     <None Include="Views\User\doctor.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\price.cshtml" />
@@ -423,6 +424,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AppointmentRegistration.cs" />
     <Compile Include="Models\UserRegistration.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserLogin.cs" />

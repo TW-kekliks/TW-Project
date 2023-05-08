@@ -31,20 +31,22 @@
                 <div class="group">
                     @Html.LabelFor(x => x.Email)
                     @Html.TextBoxFor(x => x.Email, new { @type = "email" })
-                    @Html.ValidationMessageFor(x => x.Email)
+                    @Html.ValidationMessageFor(x => x.Email,"",new {@class = "text-danger"})
                 </div>
+                <br />
                 <div class="group">
                     @Html.LabelFor(x => x.Password)
                     @Html.PasswordFor(x => x.Password)
                     @Html.ValidationMessageFor(x => x.Password)
                 </div>
-                    <div class="group button_container">
-                        <button>Войти</button>
-                    </div>
 
+                <br />
 
                 <div class="col-xl-4 col-lg-6 wow slideInUp" data-wow-delay="0.3s">
-
+                    <div class="col-12">
+                       <button type="submit" class="btn btn-primary w-100 py-3">Вход</button>
+                    </div>
+                    <br />
                     
                     <div class="col-12">
                         <a href="@Url.Action("SignUp", "Login")" class="btn btn-primary w-100 py-3">Регистрация</a>

@@ -56,7 +56,7 @@ namespace eUseControl.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", userLogin.StatusMsg);
+                    ModelState.AddModelError("Email", userLogin.StatusMsg);
                     return View();
                 }
             }
@@ -65,7 +65,7 @@ namespace eUseControl.Controllers
         }
 
         public ActionResult SignUp()
-        {
+        { 
             return View();
         }
 

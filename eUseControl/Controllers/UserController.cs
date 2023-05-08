@@ -9,6 +9,8 @@ using eUseControl.Models;
 using Microsoft.Ajax.Utilities;
 using eUseControl.Helpers;
 using eUseControl.Web.Extension;
+using eUseControl.BusinessLogic.DBModel;
+using eUseControl.Domain.Entities.User;
 
 namespace eUseControl.Controllers
 {
@@ -96,6 +98,65 @@ namespace eUseControl.Controllers
             return View(u);
         }
 
+        [HttpGet]
+        public ActionResult appointment()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult appointment(AppointmentRegistration model)
+        {
+            var apiCookie = Request.Cookies["X-KEY"];
+            var profile = _session.GetUserByCookie(apiCookie.Value);
+            if (profile != null)
+            {
+                System.Web.HttpContext.Current.SetMySessionObject(profile);
+                System.Web.HttpContext.Current.Session["LoginStatus"] = "login";
+            }
+            else
+            {
+                System.Web.HttpContext.Current.Session.Clear();
+                if (ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("X-KEY"))
+                {
+                    var cookie = ControllerContext.HttpContext.Request.Cookies["X-KEY"];
+                    if (cookie != null)
+                    {
+                        cookie.Expires = DateTime.Now.AddDays(-1);
+                        ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                    }
+                }
+            }
+            if (ModelState.IsValid)
+            {
+                using (var db = new AppointmentContext())
+                {
+                    if (db.Users.Any(u => u.Time == model.Time && u.Doctor == model.Doctor && u.Date == model.Date))
+                    {
+                        ModelState.AddModelError("", "Этот врач занят в это время");
+                        return View(model);
+                    }
+
+                    var user = new ADbTable
+                    {
+                        Email = profile.Email,
+                        Doctor= model.Doctor,
+                        Service = model.Service,
+                        Date = model.Date,
+                        Time = model.Time,
+                        Room = model.Room,
+                        Notes = model.Notes,
+                    };
+                    db.Users.Add(user);
+                    db.SaveChanges();
+
+                    
+                    return RedirectToAction("user", "User");
+                }
+            }
+            return View(model);
+        }
 
     }
 }

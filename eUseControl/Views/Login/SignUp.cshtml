@@ -33,33 +33,50 @@
                         @Html.ValidationMessage("")
                         <div class="group">
                             @Html.LabelFor(x => x.Email)
+                            <br />
                             @Html.EditorFor(x => x.Email)
-                            @Html.ValidationMessageFor(x => x.Email)
+                            <br />
+                            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
                         </div>
                         <div class="group">
+                            <br />
                             @Html.LabelFor(x => x.FirstName)
+                            <br />
                             @Html.EditorFor(x => x.FirstName)
+                            <br />
                             @Html.ValidationMessageFor(x => x.FirstName)
                         </div>
                         <div class="group">
+                            <br />
                             @Html.LabelFor(x => x.LastName)
+                            <br />
                             @Html.EditorFor(x => x.LastName)
+                            <br />
                             @Html.ValidationMessageFor(x => x.LastName)
                         </div>
                         <div class="group">
+                            <br />
                             @Html.LabelFor(x => x.Number)
+                            <br />
                             @Html.EditorFor(x => x.Number)
+                            <br />
                             @Html.ValidationMessageFor(x => x.Number)
                         </div>
                         <div class="group">
+                            <br />
                             @Html.LabelFor(x => x.Password)
+                            <br />
                             @Html.PasswordFor(x => x.Password)
+                            <br />
                             @Html.ValidationMessageFor(x => x.Password)
                         </div>
                         <div class="group">
+                            <br />
                             @Html.LabelFor(x => x.ConfirmPassword)
+                            <br />
                             @Html.PasswordFor(x => x.ConfirmPassword)
-                            @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                            <br />
+                            @Html.ValidationMessageFor(x => x.ConfirmPassword,"", new { @class = "text-danger" })
                         </div>
                         <button class="btn btn-primary w-100 py-3" type="submit">Регистрация</button>
                     }
