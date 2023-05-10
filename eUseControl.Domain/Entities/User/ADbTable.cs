@@ -22,6 +22,11 @@ namespace eUseControl.Domain.Entities.User
         public Doctors Doctor { get; set; }
 
         [Required]
+        [Display(Name = "Doctor Email Address")]
+        [StringLength(30)]
+        public string DEmail { get; set; }
+
+        [Required]
         [Display(Name = "Service")]
         public Services Service { get; set; }
 

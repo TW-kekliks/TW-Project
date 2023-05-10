@@ -10,6 +10,7 @@ namespace eUseControl.Domain.Entities.Enums
     {
         Room1,
         Room2,
-        Room3
+        Room3,
+        Room4,
     }
 }

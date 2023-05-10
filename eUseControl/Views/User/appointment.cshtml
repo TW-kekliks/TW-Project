@@ -55,11 +55,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-sm-6">
-                                    <div class="date" id="date1" data-target-input="nearest">
-                                        @Html.DropDownListFor(model => model.Room, new SelectList(Enum.GetValues(typeof(eUseControl.Domain.Entities.Enums.Rooms))), "Выберите кабинет", new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Услуги", @style = "height: 55px;" })
-                                    </div>
-                                </div>
+                                
                                 <div class="col-12 col-sm-6" style="width:200%">
                                     <div class="date" id="date1" data-target-input="nearest">
                                         @Html.TextBoxFor(model => model.Notes, new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Примечания", @style = "height: 110px;" })

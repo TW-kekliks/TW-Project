@@ -8,8 +8,8 @@ namespace eUseControl.Domain.Entities.Enums
 {
     public enum Services
     {
-        Service1,
-        Service2,
-        Service3
+        УзиГлаза,
+        КорреккцияЗрения,
+        ЛечениеКатаракты
     }
 }

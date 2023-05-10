@@ -11,6 +11,9 @@ using eUseControl.Helpers;
 using eUseControl.Web.Extension;
 using eUseControl.BusinessLogic.DBModel;
 using eUseControl.Domain.Entities.User;
+using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+using System.Web.UI;
 
 namespace eUseControl.Controllers
 {
@@ -86,6 +89,7 @@ namespace eUseControl.Controllers
             u.FirstName = profile.FirstName;
             u.LastName = profile.LastName;
             u.PhoneNumber = profile.Number;
+            u.Email = profile.Email;
             
             
             return View(u);
@@ -137,9 +141,15 @@ namespace eUseControl.Controllers
                         Service = model.Service,
                         Date = model.Date,
                         Time = model.Time,
-                        Room = model.Room,
                         Notes = model.Notes,
                     };
+                    switch (model.Doctor)
+                    {
+                        case Domain.Entities.Enums.Doctors.SomovOleg:
+                            user.DEmail = "somov675@gmail.com";
+                            user.Room = Domain.Entities.Enums.Rooms.Room1;
+                            break;
+                    }
                     db.Users.Add(user);
                     db.SaveChanges();
 

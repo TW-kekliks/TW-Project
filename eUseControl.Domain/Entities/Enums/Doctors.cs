@@ -1,11 +1,20 @@
 ﻿
+using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace eUseControl.Domain.Entities.Enums
 {
     public enum Doctors
-    {
-        Doctor1,
-        Doctor2,
-        Doctor3
+    { 
+  
+        SomovOleg ,
+
+        NovicovAlexandr,
+
+        SocolovMaxim ,
+        ShatiloAlexandr
     }
+
+
+;
 }
