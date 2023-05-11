@@ -2,6 +2,7 @@
     Layout = "~/Views/Shared/_LDoctor.cshtml";
 }
 @model eUseControl.Models.UserData
+@using eUseControl.Extension
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container">
         <div class="row g-5">
@@ -43,7 +44,7 @@
                         <td>@appointment.Id.ToString()</td>
                         <td>@appointment.Date.ToString("dd/MM/yyyy")</td>
                         <td>@appointment.Time.ToString("hh\\:mm")</td>
-                        <td>@appointment.Service</td>
+                        <td>@appointment.Service.GetEnumDescription()</td>
                         <td>@appointment.Notes</td>
                         @if (@appointment.Status == eUseControl.Domain.Entities.Enums.ARole.NOTSELECTED)
                         {

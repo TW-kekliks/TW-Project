@@ -14,7 +14,7 @@
             <div class="navbar-nav ms-auto py-0">
                 @Html.ActionLink("На главную", "Index", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
                 @Html.ActionLink("О нас", "about", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
-                
+
 
                 <a href=@Url.Action("service", "Home") class="nav-item nav-link">Услуги</a>
 
@@ -22,15 +22,19 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Страницы</a>
                     <div class="dropdown-menu m-0">
                         <a href="@Url.Action("price", "Home")" class="dropdown-item">Тарифы</a>
-                        <a href="@Url.Action("team", "Home")" class="dropdown-item">Наши спрециалисты</a>              
+                        <a href="@Url.Action("team", "Home")" class="dropdown-item">Наши спрециалисты</a>
                         <a href="@Url.Action("testimonial", "Home")" class="dropdown-item">Отзывы</a>
-                        
+
                     </div>
                 </div>
                 <a href="@Url.Action("Contact", "Home")" class="nav-item nav-link">Контакты</a>
             </div>
             <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-            <a href="@Url.Action("appointment", "User")" class="btn btn-primary py-2 px-4 ms-3">Запись</a>
+            <a href="@Url.Action("user", "User")" class="btn btn-primary py-2 px-4 ms-3">Личный кабинет</a>
+            @using (Html.BeginForm("SignOut", "Login", FormMethod.Post))
+            {
+            <input type="submit" class="btn btn-primary py-2 px-4 ms-3" value="Выход" title="Выход" />
+            }
 
         </div>
 

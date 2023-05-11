@@ -25,6 +25,7 @@ namespace eUseControl.Controllers
         public ActionResult SignIn()
         {
             return View();
+
         }
 
         [HttpPost]
@@ -65,7 +66,7 @@ namespace eUseControl.Controllers
         }
 
         public ActionResult SignUp()
-        { 
+        {
             return View();
         }
 
@@ -106,6 +107,21 @@ namespace eUseControl.Controllers
                 }
             }
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SignOut()
+        {
+            System.Web.HttpContext.Current.Session.Clear();
+            var cookie = ControllerContext.HttpContext.Request.Cookies["X-KEY"];
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+            }
+            System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
+            System.Web.HttpContext.Current.Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
 
     }

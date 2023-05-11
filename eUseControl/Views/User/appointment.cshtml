@@ -1,4 +1,5 @@
 @using System.Web.Optimization
+@using eUseControl.Extension
 @model eUseControl.Models.AppointmentRegistration
 @{
     Layout = "~/Views/Shared/_LUser.cshtml";
@@ -46,12 +47,12 @@
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date1" data-target-input="nearest">
-                                        @Html.DropDownListFor(model => model.Doctor, new SelectList(Enum.GetValues(typeof(eUseControl.Domain.Entities.Enums.Doctors))), "Выберите врача", new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Доктор", @style = "height: 55px;" })
+                                        @Html.DropDownListFor(model => model.Doctor, Enum.GetValues(typeof(eUseControl.Domain.Entities.Enums.Doctors)).Cast<eUseControl.Domain.Entities.Enums.Doctors>().Select(e => new SelectListItem { Text = e.GetEnumDescription(), Value = e.ToString()}), "Выберите врача", new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Доктор", @style = "height: 55px;" })
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date1" data-target-input="nearest">
-                                        @Html.DropDownListFor(model => model.Service, new SelectList(Enum.GetValues(typeof(eUseControl.Domain.Entities.Enums.Services))), "Выберите услугу", new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Услуги", @style = "height: 55px;" })
+                                        @Html.DropDownListFor(model => model.Service, Enum.GetValues(typeof(eUseControl.Domain.Entities.Enums.Doctors)).Cast<eUseControl.Domain.Entities.Enums.Services>().Select(e => new SelectListItem { Text = e.GetEnumDescription(), Value = e.ToString()}), "Выберите услугу", new { @class = "form-control bg-light border-0 datetimepicker-input", @placeholder = "Услуги", @style = "height: 55px;" })
                                     </div>
                                 </div>
 

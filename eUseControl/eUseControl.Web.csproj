@@ -404,6 +404,8 @@
     <Content Include="Views\Shared\_NavbarLoginU.cshtml" />
     <Content Include="Views\User\appointment.cshtml" />
     <Content Include="Views\Shared\_NavbarLoginD.cshtml" />
+    <Content Include="Views\Shared\_NavbarSign.cshtml" />
+    <Content Include="Views\Shared\_LSign.cshtml" />
     <None Include="Views\User\doctor.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\price.cshtml" />
@@ -422,6 +424,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Extension\EnumExtensions.cs" />
     <Compile Include="Extension\HttpContextExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
