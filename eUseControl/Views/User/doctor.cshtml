@@ -13,9 +13,49 @@
                     <h6 class="display-6 mb-0"><small><small><small><small>Фамилия: @Model.LastName</small></small></small></small></h6>
                 </div>
 
-                    </div>
-                </div>
             </div>
+        
+            <div class="col-lg-5">
+                    <div class="section-title mb-4">
+                        <h2 class="position-relative d-inline-block text-primary text-uppercase">Отзывы от пользователей</h2>
+                        @using (var db = new eUseControl.BusinessLogic.DBModel.CommentContext())
+                        {
+                            var comments = db.Comment.Where(p => p.Status == eUseControl.Domain.Entities.Enums.ARole.NOTSELECTED);
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Коментарий</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach(var comment in comments)
+                                    {
+                                        <td>@comment.Text</td>
+                                        <td>
+                                            @using (Html.BeginForm("AcceptComment", "AcceptReject", FormMethod.Post))
+                                            {
+                                                var IdString = comment.Id.ToString();
+                                                @Html.Hidden("Id", IdString)
+                                                <input type="submit" class="btn" value="Принять" title="Принять" />
+                                            }
+
+                                            @using (Html.BeginForm("RejectComment", "AcceptReject", FormMethod.Post))
+                                            {
+                                                var IdString = comment.Id.ToString();
+                                                @Html.Hidden("Id", IdString)
+                                                <input type="submit" class="btn" value="Отклонить" title="Отклонить" />
+                                            }
+
+                                        </td>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+             </div>
+    </div>
+</div>
         </div>
 
 <div class="container wow fadeInUp" data-wow-delay="0.1s">
@@ -49,14 +89,14 @@
                         @if (@appointment.Status == eUseControl.Domain.Entities.Enums.ARole.NOTSELECTED)
                         {
                             <td>
-                                @using (Html.BeginForm("Accept", "Appointment", FormMethod.Post))
+                                @using (Html.BeginForm("Accept", "AcceptReject", FormMethod.Post))
                                 {
                                     var IdString = appointment.Id.ToString();
                                     @Html.Hidden("Id", IdString)
                                     <input type="submit" class="btn" value="Принять" title="Принять" />
                                 }
 
-                                @using (Html.BeginForm("Reject", "Appointment", FormMethod.Post))
+                                @using (Html.BeginForm("Reject", "AcceptReject", FormMethod.Post))
                                 {
                                     var IdString = appointment.Id.ToString();
                                     @Html.Hidden("Id", IdString)

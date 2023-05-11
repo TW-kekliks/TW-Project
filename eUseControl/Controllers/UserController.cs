@@ -159,6 +159,60 @@ namespace eUseControl.Controllers
             }
             return View(model);
         }
+        [HttpPost]
+        public ActionResult Comment(string text)
+        {
+            var apiCookie = Request.Cookies["X-KEY"];
+            var profile = _session.GetUserByCookie(apiCookie.Value);
+            if (profile != null)
+            {
+                System.Web.HttpContext.Current.SetMySessionObject(profile);
+                System.Web.HttpContext.Current.Session["LoginStatus"] = "login";
+            }
+            else
+            {
+                System.Web.HttpContext.Current.Session.Clear();
+                if (ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("X-KEY"))
+                {
+                    var cookie = ControllerContext.HttpContext.Request.Cookies["X-KEY"];
+                    if (cookie != null)
+                    {
+                        cookie.Expires = DateTime.Now.AddDays(-1);
+                        ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                    }
+                }
+            }
+            if (text!=null)
+            {
+                using (var db = new CommentContext())
+                {
+                    if (db.Comment.Any(u => u.Email == profile.Email && u.Status!= Domain.Entities.Enums.ARole.REJECTED ))
+                    {
+                        ModelState.AddModelError("Notes", "Вы уже оставили отзыв,дождитесь пока он будет рассмотрен");
+                        return RedirectToAction("user", "User");
+                    }
+
+                    var comment = new CDbTable
+                    {
+                        Email = profile.Email,
+                        Text= text,
+                        Status = Domain.Entities.Enums.ARole.NOTSELECTED
+                    };
+             
+                    db.Comment.Add(comment);
+                    db.SaveChanges();
+
+                    
+                    return RedirectToAction("user", "User");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("Notes", "Поле пустое");
+                return RedirectToAction("user", "User");
+            }
+
+        }
 
     }
 }

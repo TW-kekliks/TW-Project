@@ -15,26 +15,41 @@
     </div>
     <!-- Hero End -->
     <!-- Testimonial Start -->
-    <div class="container-fluid bg-primary bg-testimonial py-5 mb-5 wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 90px;">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="owl-carousel testimonial-carousel rounded p-5 wow zoomIn" data-wow-delay="0.6s">
-                        <div class="testimonial-item text-center text-white">
-                            <img class="img-fluid mx-auto rounded mb-4" src="~/img/testemonial-1.png" alt="">
-                            <p class="fs-5">До этого я ходил по разным местам и не мог найти подходящие услуги для себя пока мне на работе не посоветовали данную клинику, спасибо за качественный сервис!</p>
-                            <hr class="mx-auto w-25">
-                            <h4 class="text-white mb-0">Олимпов Зевс</h4>
-                        </div>
-                        <div class="testimonial-item text-center text-white">
-                            <img class="img-fluid mx-auto rounded mb-4" src="~/img/testemonial-2.png" alt="">
-                            <p class="fs-5">Лучшие цены, лучший сервис, лучшее местоположение, адекватный персонал, спасибо!</p>
-                            <hr class="mx-auto w-25">
-                            <h4 class="text-white mb-0">Довольнов Мигель</h4>
+            <div class="container-fluid bg-primary bg-testimonial py-5 mb-5 wow fadeInUp" data-wow-delay="0.1s" style="margin-top: 90px;">
+                <div class="container py-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="owl-carousel testimonial-carousel rounded p-5 wow zoomIn" data-wow-delay="0.6s">
+@using (var dbu = new eUseControl.BusinessLogic.DBModel.UserContext())
+{
+    using (var dbc = new eUseControl.BusinessLogic.DBModel.CommentContext())
+    {
+        var comments = dbc.Comment;
+        foreach (var comment in comments)
+        {
+            if (comment.Status == eUseControl.Domain.Entities.Enums.ARole.ACCEPTED)
+            {
+
+
+                var users = dbu.Users.Where(p => p.Email == comment.Email);
+                foreach (var user in users)
+                {
+
+
+                                <div class="testimonial-item text-center text-white">
+                                    <p class="fs-5">@comment.Text</p>
+                                    <hr class="mx-auto w-25">
+                                    <h4 class="text-white mb-0">@user.FirstName @user.LastName</h4>
+                                </div>
+                                
+                }
+            }
+        }
+    }
+}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
     <!-- Testimonial End -->
