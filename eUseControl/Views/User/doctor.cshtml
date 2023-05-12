@@ -68,6 +68,7 @@
             <thead>
                 <tr>
                     <th>Номер записи</th>
+                    <th>Пациент</th>
                     <th>Дата</th>
                     <th>Время</th>
                     <th>Услуга</th>
@@ -82,6 +83,7 @@
                     {
                     <tr>
                         <td>@appointment.Id.ToString()</td>
+                        <td>@appointment.Email</td>
                         <td>@appointment.Date.ToString("dd/MM/yyyy")</td>
                         <td>@appointment.Time.ToString("hh\\:mm")</td>
                         <td>@appointment.Service.GetEnumDescription()</td>

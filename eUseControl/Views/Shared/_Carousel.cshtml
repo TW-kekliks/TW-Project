@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "_Carousel";
 }
-
+@model eUseControl.Domain.Entities.User.UserMinimal
 <div class="container-fluid p-0">
     <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -11,7 +11,18 @@
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
                         <h1 class="display-1 text-white mb-md-4 animated zoomIn">Взгляните на мир по-новому</h1>
-                        <a href="@Url.Action("SignIn", "Login")" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Вход</a>
+                        @if (Model.Level == eUseControl.Domain.Entities.Enums.URole.UNAUTHORIZED)
+                        {
+                            <a href="@Url.Action("SignIn", "Login")" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Вход</a>
+                        }
+                        else if (Model.Level == eUseControl.Domain.Entities.Enums.URole.USER)
+                        {
+                            <a href="@Url.Action("user", "User")" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Личный кабинет</a>
+                        }
+                        else if (Model.Level == eUseControl.Domain.Entities.Enums.URole.DOCTOR)
+                        {
+                            <a href="@Url.Action("doctor", "User")" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Личный кабинет</a>
+                        }
                         <a href="@Url.Action("service", "Home")" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Услуги</a>
                     </div>
                 </div>

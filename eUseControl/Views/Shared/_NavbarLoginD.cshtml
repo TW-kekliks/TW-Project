@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "_Navbar";
 }
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
@@ -30,7 +29,7 @@
                 <a href="@Url.Action("Contact", "Home")" class="nav-item nav-link">Контакты</a>
             </div>
             <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-            <a href="@Url.Action("user", "User")" class="btn btn-primary py-2 px-4 ms-3">Личный кабинет</a>
+            <a href="@Url.Action("doctor", "User")" class="btn btn-primary py-2 px-4 ms-3">Личный кабинет</a>
             @using (Html.BeginForm("SignOut", "Login", FormMethod.Post))
             {
             <input type="submit" class="btn btn-primary py-2 px-4 ms-3" value="Выход" title="Выход" />

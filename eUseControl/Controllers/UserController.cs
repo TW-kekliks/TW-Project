@@ -149,6 +149,10 @@ namespace eUseControl.Controllers
                             user.DEmail = "somov675@gmail.com";
                             user.Room = Domain.Entities.Enums.Rooms.Room1;
                             break;
+                        case Domain.Entities.Enums.Doctors.ShatiloAlexandr:
+                            user.DEmail = "shatilo@mail.ru";
+                            user.Room = Domain.Entities.Enums.Rooms.Room2;
+                            break;
                     }
                     db.Users.Add(user);
                     db.SaveChanges();
@@ -188,7 +192,7 @@ namespace eUseControl.Controllers
                 {
                     if (db.Comment.Any(u => u.Email == profile.Email && u.Status!= Domain.Entities.Enums.ARole.REJECTED ))
                     {
-                        ModelState.AddModelError("Notes", "Вы уже оставили отзыв,дождитесь пока он будет рассмотрен");
+                        ModelState.AddModelError("Notes", "Вы уже оставили отзыв, дождитесь пока он будет рассмотрен");
                         return RedirectToAction("user", "User");
                     }
 
