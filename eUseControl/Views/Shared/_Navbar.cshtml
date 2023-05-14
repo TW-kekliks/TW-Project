@@ -1,7 +1,9 @@
-﻿
+﻿@using System.Web.Optimization
+@model eUseControl.Domain.Entities.User.UserMinimal
 @{
     ViewBag.Title = "_Navbar";
 }
+
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
     <a href="@Url.Action("Index", "Home")" class="navbar-brand p-0">
         <a href="@Url.Action("Index", "Home")" class="navbar-brand p-0">
@@ -12,9 +14,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
+
                 @Html.ActionLink("На главную", "Index", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
                 @Html.ActionLink("О нас", "about", "Home", new { area = "" }, new { @class = "nav-item nav-link" })
-                
+
 
                 <a href=@Url.Action("service", "Home") class="nav-item nav-link">Услуги</a>
 
@@ -22,15 +25,33 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Страницы</a>
                     <div class="dropdown-menu m-0">
                         <a href="@Url.Action("price", "Home")" class="dropdown-item">Тарифы</a>
-                        <a href="@Url.Action("team", "Home")" class="dropdown-item">Наши спрециалисты</a>              
+                        <a href="@Url.Action("team", "Home")" class="dropdown-item">Наши спрециалисты</a>
                         <a href="@Url.Action("testimonial", "Home")" class="dropdown-item">Отзывы</a>
-                        <a href="@Url.Action("appointment", "Home")" class="dropdown-item ">Запись</a>
                     </div>
                 </div>
                 <a href="@Url.Action("Contact", "Home")" class="nav-item nav-link">Контакты</a>
             </div>
-            <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-            <a href="@Url.Action("SignIn", "Login")" class="btn btn-primary py-2 px-4 ms-3">Вход</a>
+            @if (Model.Level == eUseControl.Domain.Entities.Enums.URole.UNAUTHORIZED)
+            {
+                <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
+                <a href="@Url.Action("SignIn", "Login")" class="btn btn-primary py-2 px-4 ms-3">Вход</a>
+            }
+            @if (Model.Level != eUseControl.Domain.Entities.Enums.URole.UNAUTHORIZED)
+            {
+                if (Model.Level == eUseControl.Domain.Entities.Enums.URole.USER)
+                {
+                    <a href="@Url.Action("user", "User")" class="btn btn-primary py-2 px-4 ms-3">Личный кабинет</a>
+                    <a href="@Url.Action("appointment", "User")" class="btn btn-primary py-2 px-4 ms-3">Запись</a>
+                }
+                if (Model.Level == eUseControl.Domain.Entities.Enums.URole.DOCTOR)
+                {
+                    <a href="@Url.Action("doctor", "User")" class="btn btn-primary py-2 px-4 ms-3">Личный кабинет</a>
+                }
+                using (Html.BeginForm("SignOut", "Login", FormMethod.Post))
+                {
+                    <input type="submit" class="btn btn-primary py-2 px-4 ms-3" value="Выход" title="Выход" />
+                }
+            }
 
         </div>
 

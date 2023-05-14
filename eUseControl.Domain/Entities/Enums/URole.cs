@@ -1,5 +1,5 @@
 ﻿
-namespace eUseControl.Domain.Enums
+namespace eUseControl.Domain.Entities.Enums
 {
     public enum URole
     {

@@ -1,5 +1,9 @@
+@using System.Web.Optimization
+@model eUseControl.Models.UserLogin
+
 @{
-    Layout = "~/Views/Shared/_LPages.cshtml";
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_LSign.cshtml";
 }
     <!-- Hero Start -->
     <div class="container-fluid bg-primary py-5 hero-header mb-5">
@@ -20,27 +24,37 @@
                 <div class="col-xl-4 col-lg-6 wow slideInUp" data-wow-delay="0.1s">
 
                 </div>
-                <div class="col-xl-4 col-lg-6 wow slideInUp" data-wow-delay="0.3s">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-12">
-                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Ваш Email" style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <input type="email" class="form-control border-0 bg-light px-4" placeholder="Ваш пароль" style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <a href="@Url.Action("User", "Home")" class="btn btn-primary w-100 py-3">Вход</a>
-                            </div>
-                            <div class="col-12">
-                                <a href="@Url.Action("sign_up", "Home")" class="btn btn-primary w-100 py-3">Регистрация</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-xl-4 col-lg-12 wow slideInUp" data-wow-delay="0.6s">
 
-                </div>
+                @using (Html.BeginForm("SignIn", "Login", FormMethod.Post, new { @id = "LoginForm" }))
+                {
+                    @Html.AntiForgeryToken()
+            <div class="col-xl-4 col-lg-6 wow slideInUp" data-wow-delay="0.3s">
+                <div class="row g-3">
+                    <form>
+                        <div class="col-12">
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control border-0 bg-light px-4", @placeholder = "Почта", @style = "height: 55px;", @type = "email" })
+
+                            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-12">
+                            @Html.PasswordFor(x => x.Password, new { @class = "form-control border-0 bg-light px-4", @placeholder = "Пароль", @style = "height: 55px;", @type = "password" })
+                            @Html.ValidationMessageFor(x => x.Password)
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary w-100 py-3">Вход</button>
+                        </div>
+                        <div class="col-12">
+                            <a href="@Url.Action("SignUp", "Login")" class="btn btn-primary w-100 py-3">Регистрация</a>
+                        </div>
+                
+                </form>
+
+                </div>           
             </div>
+                }
+            </div>
+                
         </div>
+                
     </div>
+                

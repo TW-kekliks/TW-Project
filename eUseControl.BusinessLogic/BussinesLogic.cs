@@ -5,7 +5,7 @@ using System.Text;
 
 namespace eUseControl.BusinessLogic
 {
-    public class BusinessLogic
+    public class BussinesLogic
     {
         public ISession GetSessionBL()
         {

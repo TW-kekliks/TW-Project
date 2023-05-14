@@ -4,9 +4,11 @@ using eUseControl.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
+using AutoMapper;
+using eUseControl.BusinessLogic.DBModel;
 
 namespace eUseControl.Controllers
 {
@@ -15,70 +17,112 @@ namespace eUseControl.Controllers
         private readonly ISession _session;
         public LoginController()
         {
-            var bl = new BusinessLogic.BusinessLogic();
+            var bl = new BusinessLogic.BussinesLogic();
             _session = bl.GetSessionBL(); 
-        }
-
-
-        [HttpGet]
-
-        public ActionResult Index()
-        {
-            return RedirectToAction("SignIn", "Login");
         }
 
         [HttpGet]
         public ActionResult SignIn()
         {
-            UserData user = new UserData();
-            
-            ULoginData data = new ULoginData
-            {
-                Credential = "Login123" ,
-                Password = "qwerty1234",
-                LoginIp = Request.UserHostAddress,
-                LoginDateTime = DateTime.Now
+            return View();
 
-
-            };
-
-            var userLogin = _session.UserLogin(data);
-            return View(user);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(UserLogin login)
+        public ActionResult SignIn(UserLogin model)
         {
-
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
-                ULoginData data = new ULoginData
-                {
-                    Credential= login.Credential,
-                    Password= login.Password,
-                    LoginIp= Request.UserHostAddress,
-                    LoginDateTime= DateTime.Now
+                Mapper.Initialize(cfg => cfg.CreateMap<UserLogin, ULoginData>());
+                var data = Mapper.Map<ULoginData>(model);
 
-
-                };
+                data.LoginIp = Request.UserHostAddress;
+                data.LoginDateTime = DateTime.Now;
 
                 var userLogin = _session.UserLogin(data);
                 if (userLogin.Status)
                 {
-                    //ADD COOKIE
+                    HttpCookie cookie = _session.GenCookie(model.Email);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
-                    return RedirectToAction("SignIn", "Login");
-
+                    using (UserContext db = new UserContext())
+                    {
+                        data.Level = db.Users.FirstOrDefault(u => u.Email == data.Email).Level;
+                    }
+                    if (data.Level == Domain.Entities.Enums.URole.DOCTOR)
+                        return RedirectToAction("doctor", "User");
+                    else
+                        return RedirectToAction("user", "User");
                 }
                 else
                 {
-                    ModelState.AddModelError("", userLogin.StatusMsg);
+                    ModelState.AddModelError("Email", userLogin.StatusMsg);
                     return View();
                 }
             }
+
             return View();
         }
+
+        public ActionResult SignUp()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignUp(UserRegistration model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (UserContext db = new UserContext())
+                {
+                    if (db.Users.Any(u => u.Email == model.Email))
+                    {
+                        ModelState.AddModelError("Email", "Email уже занят");
+                        return View(model);
+                    }
+                    if (model.Password != model.ConfirmPassword)
+                    {
+                        ModelState.AddModelError("ConfirmPassword", "Не правильно повторили пароль ");
+                        return View(model);
+                    }
+
+                    var user = new UDbTable
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Number = model.Number,
+                        Email = model.Email,
+                        Password = model.Password,
+                        Level = Domain.Entities.Enums.URole.USER,
+                        LastLogin = DateTime.Now
+                        
+                    };
+                    db.Users.Add(user);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SignOut()
+        {
+            System.Web.HttpContext.Current.Session.Clear();
+            var cookie = ControllerContext.HttpContext.Request.Cookies["X-KEY"];
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+            }
+            System.Web.HttpContext.Current.Session["LoginStatus"] = "logout";
+            System.Web.HttpContext.Current.Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using eUseControl.Domain.Enums;
+using eUseControl.Domain.Entities.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
@@ -12,9 +12,14 @@ namespace eUseControl.Domain.Entities.User
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Usename")]
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Username cannot be longer than 30 characters.")]
-        public string Username { get; set; }
+        [Display(Name = "FirstName")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Username cannot be longer than 30 characters.")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "LastName")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Username cannot be longer than 30 characters.")]
+        public string LastName { get; set; }
 
         [Required]
         [Display(Name = "Password")]
@@ -25,6 +30,11 @@ namespace eUseControl.Domain.Entities.User
         [Display(Name = "Email Address")]
         [StringLength(30)]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        [StringLength(30)]
+        public string Number { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime LastLogin { get; set; }
