@@ -51,6 +51,10 @@ namespace eUseControl.Controllers
                     }
                 }
             }
+            if (profile.Level != Domain.Entities.Enums.URole.USER)
+            {
+                return RedirectToAction("Index", "Home");
+            }
                 UserData u = new UserData();
                 u.FirstName = profile.FirstName;
                 u.LastName = profile.LastName;
@@ -84,6 +88,10 @@ namespace eUseControl.Controllers
                         ControllerContext.HttpContext.Response.Cookies.Add(cookie);
                     }
                 }
+            }
+            if (profile.Level != Domain.Entities.Enums.URole.DOCTOR)
+            {
+                return RedirectToAction("Index", "Home");
             }
             UserData u = new UserData();
             u.FirstName = profile.FirstName;

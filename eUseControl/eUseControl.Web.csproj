@@ -399,6 +399,7 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.6.4.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.4.min.map" />
+    <Content Include="Views\AcceptReject\ChangeEmail.cshtml" />
     <None Include="Views\Home\about.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Shared\_NavbarLoginU.cshtml" />
@@ -430,6 +431,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AppointmentRegistration.cs" />
+    <Compile Include="Models\UserChangeEmail.cs" />
     <Compile Include="Models\UserRegistration.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserLogin.cs" />
@@ -465,7 +467,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="css\bootstrap\mixins\" />
     <Folder Include="css\bootstrap\utilities\" />
-    <Folder Include="Views\Appointment\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
