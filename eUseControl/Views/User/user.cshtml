@@ -20,6 +20,10 @@
                         <div class="col-12">
                             <a href="@Url.Action("ChangeEmail", "AcceptReject")" class="btn btn-primary w-100 py-3">Изменить почту</a>
                         </div>
+                        <br />
+                        <div class="col-12">
+                            <a href="@Url.Action("ChangePhone", "AcceptReject")" class="btn btn-primary w-100 py-3">Изменить номер</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -32,7 +36,7 @@
                                 if (db.Comment.Any(c => c.Email == Model.Email && c.Status == eUseControl.Domain.Entities.Enums.ARole.REJECTED)&& !db.Comment.Any(c => c.Email == Model.Email && c.Status != eUseControl.Domain.Entities.Enums.ARole.REJECTED))
                                 {
                                     <h6 style="color:red;">Ваш коментарий был отклонен</h6>
-                                    <input type="text" name="text" class="form-control border-0 bg-light px-4" placeholder="Комментарий" style="height: 55px;" />
+                                    <input type="text" name="text" class="form-control border-0 bg-light px-4" placeholder="Комментарий" style="height: 110px;" />
                                     <input type="submit" class="btn" value="Отправить" title="Отправить" />
                                 }
                                 if (db.Comment.Any(c => c.Email == Model.Email && c.Status == eUseControl.Domain.Entities.Enums.ARole.ACCEPTED))
@@ -45,7 +49,7 @@
                                 }
                                 if(!db.Comment.Any(c => c.Email == Model.Email))
                                 {
-                                    <input type="text" name="text" class="form-control border-0 bg-light px-4" placeholder="Комментарий" style="height: 55px;" />
+                                    <input type="text" name="text" class="form-control border-0 bg-light px-4" placeholder="Комментарий" style="height: 110px;" />
                                     <input type="submit" class="btn" value="Отправить" title="Отправить" />
                                 }
 

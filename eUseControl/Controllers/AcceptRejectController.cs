@@ -113,5 +113,40 @@ namespace eUseControl.Controllers
             }
             return RedirectToAction("SignIn", "Login");
         }
+        public ActionResult ChangePhone()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ChangePhone(UserChangePhone user)
+        {
+            if(ModelState.IsValid)
+            {
+                using (var db = new UserContext())
+                {
+                    if (db.Users.Any(u => u.Number == user.NewPhone ))
+                    {
+                        ModelState.AddModelError("NewPhone", "Номер уже занят");
+                        return View(user);
+                    }
+                    var User = db.Users.Where(p => p.Email == user.Email).FirstOrDefault();
+                    if (User.Password == user.Password)
+                    {
+                        User.Number = user.NewPhone;
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Password", "Не правильный пароль");
+                        return View(user);
+                    }
+                    db.SaveChanges();
+
+                }
+              
+                
+                
+            }
+            return RedirectToAction("SignIn", "Login");
+        }
     }
 }
